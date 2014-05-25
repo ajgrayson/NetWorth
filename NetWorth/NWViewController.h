@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NWViewController : UIViewController
+@interface NWViewController : UIViewController  <UIPageViewControllerDataSource>
+
+@property (strong, nonatomic) UIPageViewController *pageViewController;
+
+@property (strong, nonatomic) NSArray *pageTitles;
 
 @end

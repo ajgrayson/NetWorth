@@ -7,12 +7,36 @@
 //
 
 #import "NWAppDelegate.h"
+#import "NWAccountsViewController.h"
+#import "NWAccount.h"
 
 @implementation NWAppDelegate
+
+NSMutableArray *accounts;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+//    UIPageControl *pageControl = [UIPageControl appearance];
+//    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+//    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
+//    pageControl.backgroundColor = [UIColor whiteColor];
+
+    accounts = [NSMutableArray arrayWithCapacity:2];
+    
+    NWAccount *account = [[NWAccount alloc] init];
+    account.name = @"Shared";
+    [accounts addObject:account];
+    
+    account = [[NWAccount alloc] init];
+    account.name = @"Demo";
+    [accounts addObject:account];
+    
+    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+    NWAccountsViewController *accountsViewController = [navigationController viewControllers][0];
+    accountsViewController.accounts = accounts;
+    
     return YES;
 }
 							
