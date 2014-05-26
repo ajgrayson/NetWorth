@@ -32,7 +32,7 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,10 +68,24 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"AddAccount"]) {
-        
         UINavigationController *navigationController = segue.destinationViewController;
+    
         NWAccountDetailsViewController *accountDetailsViewController = [navigationController viewControllers][0];
+        
         accountDetailsViewController.delegate = self;
+        
+    } else if ([segue.identifier isEqualToString:@"EditAccount"]) {
+        UINavigationController *navigationController = segue.destinationViewController;
+        
+        NWAccountDetailsViewController *accountDetailsViewController = [navigationController viewControllers][0];
+        
+        accountDetailsViewController.delegate = self;
+        
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        
+        NWAccount *account = [self.accounts objectAtIndex:indexPath.row];
+        
+        accountDetailsViewController.data = account;
     }
 }
 
@@ -124,17 +138,6 @@
 {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
 */
 

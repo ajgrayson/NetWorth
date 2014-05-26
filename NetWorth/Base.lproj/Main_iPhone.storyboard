@@ -60,12 +60,12 @@
                     <navigationItem key="navigationItem" title="Add Account" id="7qX-vt-xDm">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0LE-VM-cv6">
                             <connections>
-                                <action selector="cancel:" destination="yTc-6D-8iE" id="GgY-jv-YuG"/>
+                                <action selector="cancel:" destination="yTc-6D-8iE" id="MeF-2Y-rtU"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="hbI-Zc-Tby">
                             <connections>
-                                <action selector="done:" destination="yTc-6D-8iE" id="A4X-WZ-ZWx"/>
+                                <action selector="done:" destination="yTc-6D-8iE" id="4uy-QW-cNY"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -75,7 +75,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W4R-X0-zuD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1804" y="-626"/>
+            <point key="canvasLocation" x="1782" y="-332"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zEp-ad-Vem">
@@ -91,7 +91,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MW1-ak-ffU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1270" y="-627"/>
+            <point key="canvasLocation" x="1272" y="-332"/>
         </scene>
         <!--Accounts View Controller - Accounts-->
         <scene sceneID="VPH-fe-UEG">
@@ -102,7 +102,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AccountCell" textLabel="nrQ-45-rMk" style="IBUITableViewCellStyleDefault" id="ikq-h4-qaN">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AccountCell" editingAccessoryType="disclosureIndicator" textLabel="nrQ-45-rMk" style="IBUITableViewCellStyleDefault" id="ikq-h4-qaN">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ikq-h4-qaN" id="NsO-eC-gc2">
@@ -118,6 +118,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="4aS-yn-dpU" kind="modal" identifier="EditAccount" id="YTy-39-TpH"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -126,9 +129,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Accounts" id="KOb-Ds-cX7">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="SVr-ok-Nq8">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="8Gh-7K-sRA">
                             <connections>
-                                <segue destination="4aS-yn-dpU" kind="modal" identifier="AddAccount" id="SdK-Am-gap"/>
+                                <segue destination="4aS-yn-dpU" kind="modal" identifier="AddAccount" id="1sf-oh-PRy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -279,4 +282,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="YTy-39-TpH"/>
+    </inferredMetricsTieBreakers>
 </document>

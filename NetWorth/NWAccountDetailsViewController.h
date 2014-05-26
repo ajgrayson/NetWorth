@@ -20,9 +20,13 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 
-@property (nonatomic, weak) id <NWAccountDetailsViewControllerDelegate> delegate;
+@property (weak, nonatomic) id <NWAccountDetailsViewControllerDelegate> delegate;
+
+@property (weak, nonatomic) NWAccount *data;
 
 - (IBAction)cancel:(id)sender;
 - (IBAction)done:(id)sender;
+
+- (void)setData:(NWAccount *)account;
 
 @end

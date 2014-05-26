@@ -26,10 +26,12 @@ NSMutableArray *accounts;
     accounts = [NSMutableArray arrayWithCapacity:2];
     
     NWAccount *account = [[NWAccount alloc] init];
+    account.id = [[NSNumber alloc] initWithInt:1];
     account.name = @"Shared";
     [accounts addObject:account];
     
     account = [[NWAccount alloc] init];
+    account.id = [[NSNumber alloc] initWithInt:2];
     account.name = @"Demo";
     [accounts addObject:account];
     
