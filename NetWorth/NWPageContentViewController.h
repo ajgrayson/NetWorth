@@ -13,8 +13,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *label;
 
-@property NSString *titleText;
-
 @property NSUInteger pageIndex;
+
+@property (strong, nonatomic) UINavigationItem *navItem;
 
 @end

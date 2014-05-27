@@ -8,13 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "NWPageContentView.h"
+#import "NWAccount.h"
 
 @interface NWHomePageContentViewController : UIViewController <NWPageContentView>
 
-@property NSString *titleText;
+@property (weak, nonatomic) IBOutlet UILabel *netWorthTotalLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *assetTotalsLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *liabilitiesTotalLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @property NSUInteger pageIndex;
 
-- (IBAction)navigateToSettings:(id)sender;
+@property (strong, nonatomic) NWAccount *account;
+
+@property (strong, nonatomic) UINavigationItem *navItem;
 
 @end

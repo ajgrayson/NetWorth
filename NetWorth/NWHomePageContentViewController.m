@@ -26,18 +26,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
+    self.titleLabel.text = [[self.account.name stringByAppendingString:@" Networth"] uppercaseString];
+
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.navItem.rightBarButtonItem.title = @"";
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)navigateToSettings:(id)sender
-{
-    
 }
 
 /*

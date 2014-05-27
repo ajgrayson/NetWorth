@@ -29,7 +29,12 @@
     
     // Do any additional setup after loading the view.
     
-    self.label.text = self.titleText;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.navItem.rightBarButtonItem.title = @"Edit";
 }
 
 - (void)didReceiveMemoryWarning

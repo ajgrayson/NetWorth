@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NWAccount.h"
 
 @interface NWViewController : UIViewController  <UIPageViewControllerDataSource>
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 
 @property (strong, nonatomic) NSArray *pageTitles;
+
+@property (strong, nonatomic) NWAccount *account;
+
+@property (strong, nonatomic) UINavigationItem *navItem;
 
 @end

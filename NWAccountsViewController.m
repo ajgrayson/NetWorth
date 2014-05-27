@@ -8,6 +8,7 @@
 
 #import "NWAccount.h"
 #import "NWAccountsViewController.h"
+#import "NWViewController.h"
 
 @interface NWAccountsViewController ()
 
@@ -86,7 +87,27 @@
         NWAccount *account = [self.accounts objectAtIndex:indexPath.row];
         
         accountDetailsViewController.data = account;
+    } else if([segue.identifier isEqualToString:@"OpenAccount"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        
+        NWAccount *account = [self.accounts objectAtIndex:indexPath.row];
+        
+        NWViewController *viewController = segue.destinationViewController;
+        viewController.account = account;
+        viewController.navItem = self.navigationItem;
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(self.tableView.editing == YES) {
+        [self performSegueWithIdentifier:@"EditAccount" sender:indexPath];//IndexPath as sender
+    }
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"EditAccount" sender:indexPath];//IndexPath as sender
 }
 
 - (void)accountDetailsViewControllerDidCancel:(NWAccountDetailsViewController *)controller
@@ -96,9 +117,21 @@
 
 - (void)accountDetailsViewController:(NWAccountDetailsViewController *)controller didAddAccount:(NWAccount *)account
 {
-    [self.accounts addObject:account];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.accounts count] - 1) inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    bool found = NO;
+    for (int i = 0; i < self.accounts.count; i++) {
+        NWAccount *ac = [self.accounts objectAtIndex:i];
+        if(ac.id == account.id) {
+            ac.name = account.name;
+            found = true;
+            [self.tableView reloadData];
+        }
+    }
+    
+    if(!found) {
+        [self.accounts addObject:account];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.accounts count] - 1) inSection:0];
+        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -112,18 +145,17 @@
 }
 */
 
-/*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        [self.accounts removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
 
 /*
 // Override to support rearranging the table view.

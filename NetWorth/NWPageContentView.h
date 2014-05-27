@@ -10,8 +10,6 @@
 
 @required
 
-@property NSString *titleText;
-
 @property NSUInteger pageIndex;
 
 @end

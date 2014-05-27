@@ -23,6 +23,11 @@
 	
     // Do any additional setup after loading the view, typically from a nib.
     
+    UIPageControl *pageControl = [UIPageControl appearance];
+    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
+    pageControl.backgroundColor = [UIColor whiteColor];
+    
     self.pageTitles = @[@"Page 1", @"Page 2", @"Page 3"];
     
     // Create page view controller
@@ -39,6 +44,8 @@
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
+    
+    self.navigationItem.rightBarButtonItem.title = @"";
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,14 +65,16 @@
         NWHomePageContentViewController *pageContentViewController1 = [self.storyboard instantiateViewControllerWithIdentifier:@"HomePageContentViewController"];
         
         pageContentViewController1.pageIndex = index;
+        pageContentViewController1.account = self.account;
+        pageContentViewController1.navItem = self.navigationItem;
         
         return pageContentViewController1;
     } else  {
         // Create a new view controller and pass suitable data.
         NWPageContentViewController *pageContentViewController2 = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
         
-        pageContentViewController2.titleText = self.pageTitles[index];
         pageContentViewController2.pageIndex = index;
+        pageContentViewController2.navItem = self.navigationItem;
         
         return pageContentViewController2;
     }
