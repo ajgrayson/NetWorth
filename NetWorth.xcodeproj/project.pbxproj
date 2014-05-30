@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7211159D1939196500DB5636 /* NWAccountDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7211159C1939196500DB5636 /* NWAccountDetailsViewController.m */; };
 		72116886193026EA0047DC02 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72116885193026EA0047DC02 /* Foundation.framework */; };
 		72116888193026EA0047DC02 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72116887193026EA0047DC02 /* CoreGraphics.framework */; };
 		7211688A193026EA0047DC02 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72116889193026EA0047DC02 /* UIKit.framework */; };
@@ -24,7 +25,6 @@
 		721168BF19302BEE0047DC02 /* NWPageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 721168BE19302BEE0047DC02 /* NWPageContentViewController.m */; };
 		723C56E11931BEF20073AE8E /* NWAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723C56E01931BEF20073AE8E /* NWAccountsViewController.m */; };
 		723C56E41931C6620073AE8E /* NWAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 723C56E31931C6620073AE8E /* NWAccount.m */; };
-		723C56E71931E0F10073AE8E /* NWAccountDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723C56E61931E0F10073AE8E /* NWAccountDetailsViewController.m */; };
 		7258580E1930657100379E80 /* NWHomePageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7258580D1930657100379E80 /* NWHomePageContentViewController.m */; };
 		725858121931562200379E80 /* NWSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 725858111931562200379E80 /* NWSettingsViewController.m */; };
 /* End PBXBuildFile section */
@@ -40,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7211159B1939196500DB5636 /* NWAccountDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWAccountDetailsViewController.h; sourceTree = "<group>"; };
+		7211159C1939196500DB5636 /* NWAccountDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWAccountDetailsViewController.m; sourceTree = "<group>"; };
 		72116882193026EA0047DC02 /* NetWorth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetWorth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72116885193026EA0047DC02 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		72116887193026EA0047DC02 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -65,8 +67,6 @@
 		723C56E01931BEF20073AE8E /* NWAccountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NWAccountsViewController.m; path = ../NWAccountsViewController.m; sourceTree = "<group>"; };
 		723C56E21931C6620073AE8E /* NWAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWAccount.h; sourceTree = "<group>"; };
 		723C56E31931C6620073AE8E /* NWAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWAccount.m; sourceTree = "<group>"; };
-		723C56E51931E0F10073AE8E /* NWAccountDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWAccountDetailsViewController.h; sourceTree = "<group>"; };
-		723C56E61931E0F10073AE8E /* NWAccountDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWAccountDetailsViewController.m; sourceTree = "<group>"; };
 		7258580C1930657100379E80 /* NWHomePageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWHomePageContentViewController.h; sourceTree = "<group>"; };
 		7258580D1930657100379E80 /* NWHomePageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWHomePageContentViewController.m; sourceTree = "<group>"; };
 		7258580F1930767F00379E80 /* NWPageContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWPageContentView.h; sourceTree = "<group>"; };
@@ -139,8 +139,8 @@
 				72116894193026EA0047DC02 /* NWAppDelegate.h */,
 				72116895193026EA0047DC02 /* NWAppDelegate.m */,
 				72116897193026EA0047DC02 /* Main_iPhone.storyboard */,
-				723C56E51931E0F10073AE8E /* NWAccountDetailsViewController.h */,
-				723C56E61931E0F10073AE8E /* NWAccountDetailsViewController.m */,
+				7211159B1939196500DB5636 /* NWAccountDetailsViewController.h */,
+				7211159C1939196500DB5636 /* NWAccountDetailsViewController.m */,
 				721168BD19302BEE0047DC02 /* NWPageContentViewController.h */,
 				721168BE19302BEE0047DC02 /* NWPageContentViewController.m */,
 				7258580C1930657100379E80 /* NWHomePageContentViewController.h */,
@@ -290,7 +290,7 @@
 				72116892193026EA0047DC02 /* main.m in Sources */,
 				725858121931562200379E80 /* NWSettingsViewController.m in Sources */,
 				72116896193026EA0047DC02 /* NWAppDelegate.m in Sources */,
-				723C56E71931E0F10073AE8E /* NWAccountDetailsViewController.m in Sources */,
+				7211159D1939196500DB5636 /* NWAccountDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -42,8 +42,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
@@ -102,12 +100,9 @@
 {
     if(self.tableView.editing == YES) {
         [self performSegueWithIdentifier:@"EditAccount" sender:indexPath];//IndexPath as sender
+    } else {
+        [self performSegueWithIdentifier:@"OpenAccount" sender:indexPath];//IndexPath as sender
     }
-}
-
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
-{
-    [self performSegueWithIdentifier:@"EditAccount" sender:indexPath];//IndexPath as sender
 }
 
 - (void)accountDetailsViewControllerDidCancel:(NWAccountDetailsViewController *)controller

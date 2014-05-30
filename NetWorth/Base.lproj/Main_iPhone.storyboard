@@ -33,60 +33,52 @@
             </objects>
             <point key="canvasLocation" x="1272" y="449"/>
         </scene>
-        <!--Account Details View Controller - Add Account-->
-        <scene sceneID="PjI-4w-uXo">
+        <!--Account Details View Controller-->
+        <scene sceneID="weN-s5-zX9">
             <objects>
-                <tableViewController id="yTc-6D-8iE" customClass="NWAccountDetailsViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="JZ8-FV-xwm">
+                <viewController id="6f2-k4-pO6" customClass="NWAccountDetailsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Izp-n1-19R"/>
+                        <viewControllerLayoutGuide type="bottom" id="VBr-ve-cs3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qX0-fr-UF6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <sections>
-                            <tableViewSection headerTitle="Name" id="N4s-cs-HOP">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="CFb-7B-bar">
-                                        <rect key="frame" x="0.0" y="119" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CFb-7B-bar" id="LTE-eu-KWS">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wyb-hQ-65f">
-                                                    <rect key="frame" x="20" y="7" width="280" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="yTc-6D-8iE" id="qUr-gi-FmG"/>
-                            <outlet property="delegate" destination="yTc-6D-8iE" id="4cR-5E-dhX"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Add Account" id="7qX-vt-xDm">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0LE-VM-cv6">
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0zv-BY-nP6">
+                                <rect key="frame" x="20" y="110" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="leN-TT-Lv9">
+                                <rect key="frame" x="20" y="81" width="46" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nMj-kx-iUh">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Ejs-be-YyL">
                             <connections>
-                                <action selector="cancel:" destination="yTc-6D-8iE" id="MeF-2Y-rtU"/>
+                                <action selector="cancel:" destination="6f2-k4-pO6" id="Bmf-JW-H44"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="hbI-Zc-Tby">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Kra-9f-NWp">
                             <connections>
-                                <action selector="done:" destination="yTc-6D-8iE" id="4uy-QW-cNY"/>
+                                <action selector="done:" destination="6f2-k4-pO6" id="U7v-km-7Ha"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="nameTextField" destination="wyb-hQ-65f" id="19o-Po-EwA"/>
+                        <outlet property="nameTextField" destination="0zv-BY-nP6" id="5i6-zn-RXs"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W4R-X0-zuD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LZY-El-bgs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1782" y="-332"/>
+            <point key="canvasLocation" x="1804" y="-332"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zEp-ad-Vem">
@@ -97,7 +89,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="yTc-6D-8iE" kind="relationship" relationship="rootViewController" id="GuS-JT-7X2"/>
+                        <segue destination="6f2-k4-pO6" kind="relationship" relationship="rootViewController" id="RUi-Nh-tqQ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MW1-ak-ffU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -129,9 +121,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="vXZ-lx-hvc" kind="push" identifier="OpenAccount" id="P6Z-dN-isS"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -148,11 +137,12 @@
                     </navigationItem>
                     <connections>
                         <segue destination="4aS-yn-dpU" kind="modal" identifier="EditAccount" id="Xhq-hx-nnw"/>
+                        <segue destination="vXZ-lx-hvc" kind="push" identifier="OpenAccount" id="fqD-EF-3E4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="08Y-xI-2UF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="703" y="-179"/>
+            <point key="canvasLocation" x="711" y="-253"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bWY-Mx-Vtr">

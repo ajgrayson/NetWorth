@@ -2,7 +2,7 @@
 //  NWAccountDetailsViewController.h
 //  NetWorth
 //
-//  Created by Johnathan Grayson on 25/05/14.
+//  Created by Johnathan Grayson on 30/05/14.
 //  Copyright (c) 2014 Johnathan Grayson. All rights reserved.
 //
 
@@ -16,7 +16,7 @@
 - (void)accountDetailsViewController:(NWAccountDetailsViewController *)controller didAddAccount:(NWAccount *)account;
 @end
 
-@interface NWAccountDetailsViewController : UITableViewController
+@interface NWAccountDetailsViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 
