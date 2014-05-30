@@ -60,7 +60,6 @@
     [self.delegate accountDetailsViewController:self didAddAccount:account];
 }
 
-
 /*
 #pragma mark - Navigation
 

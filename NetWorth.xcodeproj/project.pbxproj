@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7211159D1939196500DB5636 /* NWAccountDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7211159C1939196500DB5636 /* NWAccountDetailsViewController.m */; };
+		721115A019391E2D00DB5636 /* NWPortfolioDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7211159F19391E2D00DB5636 /* NWPortfolioDetailsViewController.m */; };
 		72116886193026EA0047DC02 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72116885193026EA0047DC02 /* Foundation.framework */; };
 		72116888193026EA0047DC02 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72116887193026EA0047DC02 /* CoreGraphics.framework */; };
 		7211688A193026EA0047DC02 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72116889193026EA0047DC02 /* UIKit.framework */; };
@@ -42,6 +43,8 @@
 /* Begin PBXFileReference section */
 		7211159B1939196500DB5636 /* NWAccountDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWAccountDetailsViewController.h; sourceTree = "<group>"; };
 		7211159C1939196500DB5636 /* NWAccountDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWAccountDetailsViewController.m; sourceTree = "<group>"; };
+		7211159E19391E2D00DB5636 /* NWPortfolioDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWPortfolioDetailsViewController.h; sourceTree = "<group>"; };
+		7211159F19391E2D00DB5636 /* NWPortfolioDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWPortfolioDetailsViewController.m; sourceTree = "<group>"; };
 		72116882193026EA0047DC02 /* NetWorth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetWorth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72116885193026EA0047DC02 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		72116887193026EA0047DC02 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -139,6 +142,8 @@
 				72116894193026EA0047DC02 /* NWAppDelegate.h */,
 				72116895193026EA0047DC02 /* NWAppDelegate.m */,
 				72116897193026EA0047DC02 /* Main_iPhone.storyboard */,
+				7211159E19391E2D00DB5636 /* NWPortfolioDetailsViewController.h */,
+				7211159F19391E2D00DB5636 /* NWPortfolioDetailsViewController.m */,
 				7211159B1939196500DB5636 /* NWAccountDetailsViewController.h */,
 				7211159C1939196500DB5636 /* NWAccountDetailsViewController.m */,
 				721168BD19302BEE0047DC02 /* NWPageContentViewController.h */,
@@ -287,6 +292,7 @@
 				721168BF19302BEE0047DC02 /* NWPageContentViewController.m in Sources */,
 				723C56E11931BEF20073AE8E /* NWAccountsViewController.m in Sources */,
 				7211689F193026EA0047DC02 /* NWViewController.m in Sources */,
+				721115A019391E2D00DB5636 /* NWPortfolioDetailsViewController.m in Sources */,
 				72116892193026EA0047DC02 /* main.m in Sources */,
 				725858121931562200379E80 /* NWSettingsViewController.m in Sources */,
 				72116896193026EA0047DC02 /* NWAppDelegate.m in Sources */,

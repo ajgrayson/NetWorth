@@ -23,7 +23,7 @@
                     <navigationItem key="navigationItem" id="OqP-aq-FZg">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="Bh8-0p-HX4">
                             <connections>
-                                <segue destination="rs0-g4-gJ4" kind="modal" id="xwS-Ff-9eq"/>
+                                <segue destination="rs0-g4-gJ4" kind="modal" identifier="ManagePortfolio" id="xwS-Ff-9eq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -202,11 +202,22 @@
             </objects>
             <point key="canvasLocation" x="2664" y="1047"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Portfolio Details View Controller-->
         <scene sceneID="eHx-kq-Ej4">
             <objects>
-                <tabBarController definesPresentationContext="YES" id="uhm-li-UN2" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="f8D-fz-x73"/>
+                <tabBarController definesPresentationContext="YES" id="uhm-li-UN2" customClass="NWPortfolioDetailsViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="f8D-fz-x73">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ucg-aw-4EU">
+                            <connections>
+                                <action selector="cancel:" destination="uhm-li-UN2" id="H8d-td-7aI"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Z6a-KK-gdP">
+                            <connections>
+                                <action selector="done:" destination="uhm-li-UN2" id="stD-Vy-kSG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="zWU-cx-Q2V">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>

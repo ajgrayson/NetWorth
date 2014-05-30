@@ -80,8 +80,6 @@
     }
 }
 
-#pragma mark - Page View Controller Data Source
-
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
     NSUInteger index = ((UIViewController<NWPageContentView> *) viewController).pageIndex;
@@ -110,6 +108,18 @@
     return [self viewControllerAtIndex:index];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ManagePortfolio"]) {
+        UINavigationController *navigationController = segue.destinationViewController;
+        
+        NWPortfolioDetailsViewController *portfolioDetailsViewController = [navigationController viewControllers][0];
+        
+        portfolioDetailsViewController.delegate2 = self;
+        
+    }
+}
+
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
 {
     return [self.pageTitles count];
@@ -118,6 +128,16 @@
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
 {
     return 0;
+}
+
+- (void)portfolioDetailsViewControllerDidCancel:(NWPortfolioDetailsViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)portfolioDetailsViewControllerDidSave:(NWPortfolioDetailsViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
