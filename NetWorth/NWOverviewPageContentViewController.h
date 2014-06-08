@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NWPageContentView.h"
+#import "NWPageContentViewProtocol.h"
 #import "NWAccount.h"
 
-@interface NWHomePageContentViewController : UIViewController <NWPageContentView>
+@interface NWOverviewPageContentViewController : UIViewController <NWPageContentViewProtocol>
 
 @property (weak, nonatomic) IBOutlet UILabel *netWorthTotalLabel;
 

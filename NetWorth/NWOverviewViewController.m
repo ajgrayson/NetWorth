@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 Johnathan Grayson. All rights reserved.
 //
 
-#import "NWViewController.h"
-#import "NWPageContentView.h"
-#import "NWPageContentViewController.h"
-#import "NWHomePageContentViewController.h"
+#import "NWOverviewViewController.h"
+#import "NWPageContentViewProtocol.h"
+#import "NWAccountPageContentViewController.h"
+#import "NWOverviewPageContentViewController.h"
 
-@interface NWViewController ()
+@interface NWOverviewViewController ()
 
 @end
 
-@implementation NWViewController
+@implementation NWOverviewViewController
 
 - (void)viewDidLoad
 {
@@ -34,7 +34,7 @@
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
     self.pageViewController.dataSource = self;
     
-    UIViewController<NWPageContentView> *startingViewController = [self viewControllerAtIndex:0];
+    UIViewController<NWPageContentViewProtocol> *startingViewController = [self viewControllerAtIndex:0];
     NSArray *viewControllers = @[startingViewController];
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
@@ -54,7 +54,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (UIViewController<NWPageContentView> *)viewControllerAtIndex:(NSUInteger)index
+- (UIViewController<NWPageContentViewProtocol> *)viewControllerAtIndex:(NSUInteger)index
 {
     if (([self.pageTitles count] == 0) || (index >= [self.pageTitles count])) {
         return nil;
@@ -62,7 +62,7 @@
     
     if(index == 0) {
         // Home page
-        NWHomePageContentViewController *pageContentViewController1 = [self.storyboard instantiateViewControllerWithIdentifier:@"HomePageContentViewController"];
+        NWOverviewPageContentViewController *pageContentViewController1 = [self.storyboard instantiateViewControllerWithIdentifier:@"HomePageContentViewController"];
         
         pageContentViewController1.pageIndex = index;
         pageContentViewController1.account = self.account;
@@ -71,7 +71,7 @@
         return pageContentViewController1;
     } else  {
         // Create a new view controller and pass suitable data.
-        NWPageContentViewController *pageContentViewController2 = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
+        NWAccountPageContentViewController *pageContentViewController2 = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
         
         pageContentViewController2.pageIndex = index;
         pageContentViewController2.navItem = self.navigationItem;
@@ -82,7 +82,7 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
-    NSUInteger index = ((UIViewController<NWPageContentView> *) viewController).pageIndex;
+    NSUInteger index = ((UIViewController<NWPageContentViewProtocol> *) viewController).pageIndex;
     
     if ((index == 0) || (index == NSNotFound)) {
         return nil;
@@ -94,7 +94,7 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
-    UIViewController<NWPageContentView> *vc = (UIViewController<NWPageContentView> *)viewController;
+    UIViewController<NWPageContentViewProtocol> *vc = (UIViewController<NWPageContentViewProtocol> *)viewController;
     NSUInteger index = vc.pageIndex;
     
     if (index == NSNotFound) {
@@ -111,11 +111,11 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"ManagePortfolio"]) {
-        UINavigationController *navigationController = segue.destinationViewController;
+        //UINavigationController *navigationController = segue.destinationViewController;
         
-        NWPortfolioDetailsViewController *portfolioDetailsViewController = [navigationController viewControllers][0];
+        //NWPortfolioDetailsViewController *portfolioDetailsViewController = [navigationController viewControllers][0];
         
-        portfolioDetailsViewController.delegate2 = self;
+        //portfolioDetailsViewController.delegate2 = self;
         
     }
 }

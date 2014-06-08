@@ -14,14 +14,9 @@
 
 @implementation NWPortfolioDetailsViewController
 
-- (IBAction)cancel:(id)sender
-{
-    [self.delegate2 portfolioDetailsViewControllerDidCancel:self];
-}
-
 - (IBAction)done:(id)sender
 {
-    [self.delegate2 portfolioDetailsViewControllerDidSave:self];
+    [self.delegate2 portfolioDetailsViewControllerDidDone:self];
 }
 
 @end

@@ -8,7 +8,7 @@
 
 #import "NWAccount.h"
 #import "NWAccountsViewController.h"
-#import "NWViewController.h"
+#import "NWOverviewViewController.h"
 
 @interface NWAccountsViewController ()
 
@@ -90,7 +90,7 @@
         
         NWAccount *account = [self.accounts objectAtIndex:indexPath.row];
         
-        NWViewController *viewController = segue.destinationViewController;
+        NWOverviewViewController *viewController = segue.destinationViewController;
         viewController.account = account;
         viewController.navItem = self.navigationItem;
     }

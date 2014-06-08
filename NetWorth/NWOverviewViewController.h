@@ -10,7 +10,7 @@
 #import "NWAccount.h"
 #import "NWPortfolioDetailsViewController.h"
 
-@interface NWViewController : UIViewController  <UIPageViewControllerDataSource, NWPortfolioDetailsViewControllerDelegate>
+@interface NWOverviewViewController : UIViewController  <UIPageViewControllerDataSource, NWPortfolioDetailsViewControllerDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 

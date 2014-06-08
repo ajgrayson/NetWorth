@@ -11,15 +11,13 @@
 @class NWPortfolioDetailsViewController;
 
 @protocol NWPortfolioDetailsViewControllerDelegate <NSObject>
-- (void)portfolioDetailsViewControllerDidCancel:(NWPortfolioDetailsViewController *)controller;
-- (void)portfolioDetailsViewControllerDidSave:(NWPortfolioDetailsViewController *)controller;
+- (void)portfolioDetailsViewControllerDidDone:(NWPortfolioDetailsViewController *)controller;
 @end
 
 @interface NWPortfolioDetailsViewController : UITabBarController
 
 @property (weak, nonatomic) id<NWPortfolioDetailsViewControllerDelegate> delegate2;
 
-- (IBAction)cancel:(id)sender;
 - (IBAction)done:(id)sender;
 
 @end

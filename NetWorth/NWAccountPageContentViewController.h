@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NWPageContentView.h"
+#import "NWPageContentViewProtocol.h"
 
-@interface NWPageContentViewController : UIViewController <NWPageContentView>
+@interface NWAccountPageContentViewController : UIViewController <NWPageContentViewProtocol>
 
 @property (weak, nonatomic) IBOutlet UILabel *label;
 

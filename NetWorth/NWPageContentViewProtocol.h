@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Johnathan Grayson. All rights reserved.
 //
 
-@protocol NWPageContentView
+@protocol NWPageContentViewProtocol
 
 @required
 

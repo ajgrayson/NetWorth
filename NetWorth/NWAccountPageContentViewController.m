@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Johnathan Grayson. All rights reserved.
 //
 
-#import "NWPageContentViewController.h"
+#import "NWAccountPageContentViewController.h"
 
-@interface NWPageContentViewController ()
+@interface NWAccountPageContentViewController ()
 
 @end
 
-@implementation NWPageContentViewController
+@implementation NWAccountPageContentViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,7 +34,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.navItem.rightBarButtonItem.title = @"Edit";
+    self.navItem.rightBarButtonItem.title = @"Manage";
 }
 
 - (void)didReceiveMemoryWarning
