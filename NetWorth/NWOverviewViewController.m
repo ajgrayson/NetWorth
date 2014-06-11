@@ -130,12 +130,7 @@
     return 0;
 }
 
-- (void)portfolioDetailsViewControllerDidCancel:(NWPortfolioDetailsViewController *)controller
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)portfolioDetailsViewControllerDidSave:(NWPortfolioDetailsViewController *)controller
+- (void)portfolioDetailsViewControllerDidDone:(NWPortfolioDetailsViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }

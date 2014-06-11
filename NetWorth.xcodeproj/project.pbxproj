@@ -26,6 +26,7 @@
 		721168BF19302BEE0047DC02 /* NWAccountPageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 721168BE19302BEE0047DC02 /* NWAccountPageContentViewController.m */; };
 		723C56E11931BEF20073AE8E /* NWAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723C56E01931BEF20073AE8E /* NWAccountsViewController.m */; };
 		723C56E41931C6620073AE8E /* NWAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 723C56E31931C6620073AE8E /* NWAccount.m */; };
+		723E412119485220001EE066 /* NWPortfolioAssetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723E412019485220001EE066 /* NWPortfolioAssetsViewController.m */; };
 		7258580E1930657100379E80 /* NWOverviewPageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7258580D1930657100379E80 /* NWOverviewPageContentViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,8 @@
 		723C56E01931BEF20073AE8E /* NWAccountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NWAccountsViewController.m; path = ../NWAccountsViewController.m; sourceTree = "<group>"; };
 		723C56E21931C6620073AE8E /* NWAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWAccount.h; sourceTree = "<group>"; };
 		723C56E31931C6620073AE8E /* NWAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWAccount.m; sourceTree = "<group>"; };
+		723E411F19485220001EE066 /* NWPortfolioAssetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWPortfolioAssetsViewController.h; sourceTree = "<group>"; };
+		723E412019485220001EE066 /* NWPortfolioAssetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWPortfolioAssetsViewController.m; sourceTree = "<group>"; };
 		7258580C1930657100379E80 /* NWOverviewPageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWOverviewPageContentViewController.h; sourceTree = "<group>"; };
 		7258580D1930657100379E80 /* NWOverviewPageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWOverviewPageContentViewController.m; sourceTree = "<group>"; };
 		7258580F1930767F00379E80 /* NWPageContentViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWPageContentViewProtocol.h; sourceTree = "<group>"; };
@@ -208,6 +211,8 @@
 			children = (
 				7211159E19391E2D00DB5636 /* NWPortfolioDetailsViewController.h */,
 				7211159F19391E2D00DB5636 /* NWPortfolioDetailsViewController.m */,
+				723E411F19485220001EE066 /* NWPortfolioAssetsViewController.h */,
+				723E412019485220001EE066 /* NWPortfolioAssetsViewController.m */,
 			);
 			name = ManagePortfolio;
 			sourceTree = "<group>";
@@ -322,6 +327,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				723E412119485220001EE066 /* NWPortfolioAssetsViewController.m in Sources */,
 				723C56E41931C6620073AE8E /* NWAccount.m in Sources */,
 				7258580E1930657100379E80 /* NWOverviewPageContentViewController.m in Sources */,
 				721168BF19302BEE0047DC02 /* NWAccountPageContentViewController.m in Sources */,
