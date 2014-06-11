@@ -33,7 +33,7 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,16 +67,16 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"AddAccount"]) {
-        UINavigationController *navigationController = segue.destinationViewController;
+        //UINavigationController *navigationController = segue.destinationViewController;
     
-        NWAccountDetailsViewController *accountDetailsViewController = [navigationController viewControllers][0];
+        NWAccountDetailsViewController *accountDetailsViewController = segue.destinationViewController;
         
         accountDetailsViewController.delegate = self;
         
     } else if ([segue.identifier isEqualToString:@"EditAccount"]) {
-        UINavigationController *navigationController = segue.destinationViewController;
+        //UINavigationController *navigationController = segue.destinationViewController;
         
-        NWAccountDetailsViewController *accountDetailsViewController = [navigationController viewControllers][0];
+        NWAccountDetailsViewController *accountDetailsViewController = segue.destinationViewController;
         
         accountDetailsViewController.delegate = self;
         
@@ -107,7 +107,7 @@
 
 - (void)accountDetailsViewControllerDidCancel:(NWAccountDetailsViewController *)controller
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [[self navigationController] popViewControllerAnimated:YES];
 }
 
 - (void)accountDetailsViewController:(NWAccountDetailsViewController *)controller didAddAccount:(NWAccount *)account
@@ -128,7 +128,7 @@
         [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [[self navigationController] popViewControllerAnimated:YES];
 }
 
 /*

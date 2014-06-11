@@ -76,23 +76,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LZY-El-bgs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1806" y="-1006"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="zEp-ad-Vem">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="4aS-yn-dpU" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="4VK-kC-ZRy"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nMa-An-nTa">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="6f2-k4-pO6" kind="relationship" relationship="rootViewController" id="RUi-Nh-tqQ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MW1-ak-ffU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1272" y="-1006"/>
+            <point key="canvasLocation" x="1494" y="-716"/>
         </scene>
         <!--Accounts View Controller - Accounts-->
         <scene sceneID="VPH-fe-UEG">
@@ -127,20 +111,20 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Accounts" id="KOb-Ds-cX7">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="8Gh-7K-sRA">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="8Gh-7K-sRA">
                             <connections>
-                                <segue destination="4aS-yn-dpU" kind="modal" identifier="AddAccount" id="1sf-oh-PRy"/>
+                                <segue destination="6f2-k4-pO6" kind="push" identifier="AddAccount" id="miI-XY-W2O"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="4aS-yn-dpU" kind="modal" identifier="EditAccount" id="Xhq-hx-nnw"/>
                         <segue destination="vXZ-lx-hvc" kind="push" identifier="OpenAccount" id="fqD-EF-3E4"/>
+                        <segue destination="6f2-k4-pO6" kind="push" identifier="EditAccount" id="Hds-yu-dab"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="08Y-xI-2UF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="565" y="-325"/>
+            <point key="canvasLocation" x="579" y="-325"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bWY-Mx-Vtr">
@@ -419,6 +403,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="1sf-oh-PRy"/>
+        <segue reference="Hds-yu-dab"/>
     </inferredMetricsTieBreakers>
 </document>
