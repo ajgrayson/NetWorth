@@ -76,12 +76,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LZY-El-bgs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1494" y="-716"/>
+            <point key="canvasLocation" x="1272" y="-660"/>
         </scene>
-        <!--Accounts View Controller - Accounts-->
+        <!--Accounts Table View Controller - Accounts-->
         <scene sceneID="VPH-fe-UEG">
             <objects>
-                <tableViewController id="K9a-EK-PLW" customClass="NWAccountsViewController" sceneMemberID="viewController">
+                <tableViewController id="K9a-EK-PLW" customClass="NWAccountsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5hG-Mc-Vgo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -141,12 +141,16 @@
             </objects>
             <point key="canvasLocation" x="3" y="-325"/>
         </scene>
-        <!--Portfolio Details View Controller-->
+        <!--Manage Portfolio Tab View Controller-->
         <scene sceneID="eHx-kq-Ej4">
             <objects>
-                <tabBarController definesPresentationContext="YES" id="uhm-li-UN2" customClass="NWPortfolioDetailsViewController" sceneMemberID="viewController">
+                <tabBarController definesPresentationContext="YES" id="uhm-li-UN2" customClass="NWManagePortfolioTabViewController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="f8D-fz-x73">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vXP-UR-5Ag"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vXP-UR-5Ag">
+                            <connections>
+                                <action selector="addPortfolioItem:" destination="uhm-li-UN2" id="hlM-hJ-VCS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="zWU-cx-Q2V">
@@ -192,22 +196,41 @@
             </objects>
             <point key="canvasLocation" x="2874" y="2558"/>
         </scene>
-        <!--Portfolio Assets View Controller-->
+        <!--Portfolio Assets Table View Controller-->
         <scene sceneID="Z9H-f3-yst">
             <objects>
-                <tableViewController id="H9q-Us-fiT" customClass="NWPortfolioAssetsViewController" sceneMemberID="viewController">
+                <tableViewController id="H9q-Us-fiT" customClass="NWPortfolioAssetsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="bhv-4o-7Xr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="rcu-1z-ZU7">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AssetCell" textLabel="t3d-fS-g2Q" detailTextLabel="1TG-f6-u5T" style="IBUITableViewCellStyleValue1" id="rcu-1z-ZU7">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rcu-1z-ZU7" id="UCv-rL-MDj">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Asset Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="t3d-fS-g2Q">
+                                            <rect key="frame" x="15" y="11" width="93" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="$000,000.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1TG-f6-u5T">
+                                            <rect key="frame" x="189" y="11" width="96" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="viy-cr-sLj" kind="push" id="vvE-Wb-oq3"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -218,18 +241,15 @@
                     <navigationItem key="navigationItem" id="e4z-uv-1iI">
                         <barButtonItem key="backBarButtonItem" title="gg" id="cSl-2h-bGV"/>
                     </navigationItem>
-                    <connections>
-                        <segue destination="viy-cr-sLj" kind="push" identifier="EditAsset" id="loY-MG-mZQ"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xYq-zc-ZUJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2874" y="1771"/>
         </scene>
-        <!--View Controller-->
+        <!--Asset Details View Controller-->
         <scene sceneID="D0g-aH-PdP">
             <objects>
-                <viewController id="viy-cr-sLj" sceneMemberID="viewController">
+                <viewController id="viy-cr-sLj" customClass="NWAssetDetailsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rQ8-cj-vfy"/>
                         <viewControllerLayoutGuide type="bottom" id="Ihh-JX-FzQ"/>
@@ -256,7 +276,6 @@
         <!--Navigation Controller - Assets-->
         <scene sceneID="1oY-JU-pcC">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NSG-vG-gTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="Vsc-hd-JKQ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Assets" id="J3V-Df-3zr"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aCl-ex-U1p">
@@ -270,6 +289,7 @@
                         <segue destination="H9q-Us-fiT" kind="relationship" relationship="rootViewController" id="W2l-8x-4Xv"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NSG-vG-gTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2340" y="1771"/>
         </scene>

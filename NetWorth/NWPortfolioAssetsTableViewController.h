@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NWPortfolioAssetsViewController : UITableViewController
+@interface NWPortfolioAssetsTableViewController : UITableViewController
+
+@property (nonatomic, strong) NSMutableArray *assets;
 
 @end

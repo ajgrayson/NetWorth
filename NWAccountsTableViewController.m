@@ -7,14 +7,14 @@
 //
 
 #import "NWAccount.h"
-#import "NWAccountsViewController.h"
+#import "NWAccountsTableViewController.h"
 #import "NWOverviewViewController.h"
 
-@interface NWAccountsViewController ()
+@interface NWAccountsTableViewController ()
 
 @end
 
-@implementation NWAccountsViewController
+@implementation NWAccountsTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -67,15 +67,11 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"AddAccount"]) {
-        //UINavigationController *navigationController = segue.destinationViewController;
-    
         NWAccountDetailsViewController *accountDetailsViewController = segue.destinationViewController;
         
         accountDetailsViewController.delegate = self;
         
     } else if ([segue.identifier isEqualToString:@"EditAccount"]) {
-        //UINavigationController *navigationController = segue.destinationViewController;
-        
         NWAccountDetailsViewController *accountDetailsViewController = segue.destinationViewController;
         
         accountDetailsViewController.delegate = self;
@@ -131,15 +127,6 @@
     [[self navigationController] popViewControllerAnimated:YES];
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -151,22 +138,5 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 
 @end

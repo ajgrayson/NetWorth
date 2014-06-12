@@ -108,18 +108,6 @@
     return [self viewControllerAtIndex:index];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"ManagePortfolio"]) {
-        //UINavigationController *navigationController = segue.destinationViewController;
-        
-        //NWPortfolioDetailsViewController *portfolioDetailsViewController = [navigationController viewControllers][0];
-        
-        //portfolioDetailsViewController.delegate2 = self;
-        
-    }
-}
-
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
 {
     return [self.pageTitles count];
@@ -130,7 +118,7 @@
     return 0;
 }
 
-- (void)portfolioDetailsViewControllerDidDone:(NWPortfolioDetailsViewController *)controller
+- (void)portfolioDetailsViewControllerDidDone:(NWManagePortfolioTabViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NWAccountDetailsViewController.h"
 
-@interface NWAccountsViewController : UITableViewController <NWAccountDetailsViewControllerDelegate>
+@interface NWAccountsTableViewController : UITableViewController <NWAccountDetailsViewControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *accounts;
 

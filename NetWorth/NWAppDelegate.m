@@ -7,7 +7,7 @@
 //
 
 #import "NWAppDelegate.h"
-#import "NWAccountsViewController.h"
+#import "NWAccountsTableViewController.h"
 #import "NWAccount.h"
 
 @implementation NWAppDelegate
@@ -36,7 +36,7 @@ NSMutableArray *accounts;
     [accounts addObject:account];
     
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-    NWAccountsViewController *accountsViewController = [navigationController viewControllers][0];
+    NWAccountsTableViewController *accountsViewController = [navigationController viewControllers][0];
     accountsViewController.accounts = accounts;
     
     return YES;

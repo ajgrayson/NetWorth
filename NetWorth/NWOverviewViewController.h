@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "NWAccount.h"
-#import "NWPortfolioDetailsViewController.h"
+#import "NWManagePortfolioTabViewController.h"
 
-@interface NWOverviewViewController : UIViewController  <UIPageViewControllerDataSource, NWPortfolioDetailsViewControllerDelegate>
+@interface NWOverviewViewController : UIViewController  <UIPageViewControllerDataSource>
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 
