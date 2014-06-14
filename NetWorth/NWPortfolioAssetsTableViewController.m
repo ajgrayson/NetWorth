@@ -15,11 +15,12 @@
 
 @implementation NWPortfolioAssetsTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithStyle:style];
+    self = [super initWithCoder:aDecoder];
     if (self) {
         // Custom initialization
+        self.assets = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -44,7 +45,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -62,5 +63,59 @@
     
     return cell;
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"AddAsset"]) {
+        NWAssetDetailsViewController *viewController = segue.destinationViewController;
+        
+        viewController.delegate = self;
+    } else if ([segue.identifier isEqualToString:@"EditAsset"]) {
+        NWAssetDetailsViewController *viewController = segue.destinationViewController;
+        
+        viewController.delegate = self;
+
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        
+        NWAsset *asset = [self.assets objectAtIndex:indexPath.row];
+        
+        viewController.asset = asset;
+    }
+}
+
+- (IBAction)done:(id)sender
+{
+    UINavigationController* navigationController = (UINavigationController*)self.parentViewController;
+    UITabBarController<NWTabItemProtocol>* tabBarController = (UITabBarController<NWTabItemProtocol>*)navigationController.parentViewController;
+    [tabBarController portfolioViewControllerDidDone:self];
+}
+
+- (void)assetDetailsViewControllerDidCancel:(NWAssetDetailsViewController *)controller
+{
+    [[self navigationController] popViewControllerAnimated:YES];
+}
+
+- (void)assetDetailsViewController:(NWAssetDetailsViewController *)controller didSaveAsset:(NWAsset *)asset
+{
+    bool found = NO;
+    for (int i = 0; i < self.assets.count; i++) {
+        NWAsset *ac = [self.assets objectAtIndex:i];
+        if(ac.id == asset.id) {
+            ac.name = asset.name;
+            found = YES;
+            [self.tableView reloadData];
+        }
+    }
+    
+    if(!found) {
+        [self.assets addObject:asset];
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.assets count] - 1) inSection:0];
+        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    
+    [[self navigationController] popViewControllerAnimated:YES];
+}
+
 
 @end

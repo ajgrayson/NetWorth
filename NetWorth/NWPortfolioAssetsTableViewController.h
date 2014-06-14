@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NWTabItemProtocol.h"
+#import "NWAssetDetailsViewController.h"
 
-@interface NWPortfolioAssetsTableViewController : UITableViewController
+@interface NWPortfolioAssetsTableViewController : UITableViewController<NWAssetDetailsViewControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *assets;
+
+@property (nonatomic, strong) UITabBarController<NWTabItemProtocol> *delegate;
+
+- (IBAction)done:(id)sender;
 
 @end

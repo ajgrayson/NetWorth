@@ -21,7 +21,7 @@
                     <navigationItem key="navigationItem" id="OqP-aq-FZg">
                         <barButtonItem key="rightBarButtonItem" title="Manage" id="Bh8-0p-HX4">
                             <connections>
-                                <segue destination="uhm-li-UN2" kind="push" id="vrk-tC-sA4"/>
+                                <segue destination="uhm-li-UN2" kind="modal" identifier="ManagePortfolio" id="vrk-tC-sA4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -190,7 +190,10 @@
                             <outlet property="delegate" destination="dKj-Wr-h6q" id="kIw-bh-wNW"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="hCZ-8n-THH"/>
+                    <navigationItem key="navigationItem" id="hCZ-8n-THH">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="6RM-3M-SYi"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7yZ-bP-9WP"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yQc-IT-12f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -229,7 +232,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="viy-cr-sLj" kind="push" id="vvE-Wb-oq3"/>
+                                    <segue destination="viy-cr-sLj" kind="push" identifier="EditAsset" id="vvE-Wb-oq3"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -240,6 +243,16 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="e4z-uv-1iI">
                         <barButtonItem key="backBarButtonItem" title="gg" id="cSl-2h-bGV"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="Tzf-Os-sao">
+                            <connections>
+                                <action selector="done:" destination="H9q-Us-fiT" id="rft-ey-C4C"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="0Iz-Qi-EY1">
+                            <connections>
+                                <segue destination="viy-cr-sLj" kind="push" identifier="AddAsset" id="7tq-kk-XB5"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xYq-zc-ZUJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -249,7 +262,7 @@
         <!--Asset Details View Controller-->
         <scene sceneID="D0g-aH-PdP">
             <objects>
-                <viewController id="viy-cr-sLj" customClass="NWAssetDetailsViewController" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="viy-cr-sLj" customClass="NWAssetDetailsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rQ8-cj-vfy"/>
                         <viewControllerLayoutGuide type="bottom" id="Ihh-JX-FzQ"/>
@@ -267,7 +280,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="RRO-OK-LGM"/>
+                    <navigationItem key="navigationItem" id="RRO-OK-LGM">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="a3I-FX-L9Y">
+                            <connections>
+                                <action selector="cancel:" destination="viy-cr-sLj" id="48j-0G-GIQ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="epE-Pa-gsR">
+                            <connections>
+                                <action selector="done:" destination="viy-cr-sLj" id="DXX-cY-iZd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nameTextField" destination="EvS-Pr-Ad2" id="zQu-B9-9cr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vf1-JA-UGh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -424,5 +451,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="Hds-yu-dab"/>
+        <segue reference="7tq-kk-XB5"/>
     </inferredMetricsTieBreakers>
 </document>

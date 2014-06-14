@@ -29,21 +29,38 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    if(self.asset != nil) {
+        self.nameTextField.text = self.asset.name;
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)done:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    NWAsset *asset = [[NWAsset alloc] init];
+    asset.name = self.nameTextField.text;
+    
+    if(self.asset != nil) {
+        asset.id = self.asset.id;
+    } else {
+        srandom(time(NULL));
+        
+        asset.id = [[NSNumber alloc]initWithInt:(arc4random() % 100)];
+    }
+    
+    [self.delegate assetDetailsViewController:self didSaveAsset:asset];
 }
-*/
+
+- (void)cancel:(id)sender
+{
+    [self.delegate assetDetailsViewControllerDidCancel:self];
+}
 
 @end

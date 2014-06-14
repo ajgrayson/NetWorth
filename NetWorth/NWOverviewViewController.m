@@ -118,6 +118,15 @@
     return 0;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"ManagePortfolio"]) {
+        NWManagePortfolioTabViewController *viewController = segue.destinationViewController;
+        
+        viewController.delegate2 = self;
+    }
+}
+
 - (void)portfolioDetailsViewControllerDidDone:(NWManagePortfolioTabViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];

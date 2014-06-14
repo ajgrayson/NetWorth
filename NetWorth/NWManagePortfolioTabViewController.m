@@ -7,6 +7,7 @@
 //
 
 #import "NWManagePortfolioTabViewController.h"
+#import "NWOverviewViewController.h"
 
 @interface NWManagePortfolioTabViewController()
 
@@ -14,9 +15,9 @@
 
 @implementation NWManagePortfolioTabViewController
 
-- (IBAction)addPortfolioItem:(id)sender
+-(void)portfolioViewControllerDidDone:(UITableViewController *)controller
 {
-    
+    [[self delegate2] portfolioDetailsViewControllerDidDone:self];
 }
 
 @end

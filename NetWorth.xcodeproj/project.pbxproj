@@ -77,6 +77,7 @@
 		7258580C1930657100379E80 /* NWOverviewPageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWOverviewPageContentViewController.h; sourceTree = "<group>"; };
 		7258580D1930657100379E80 /* NWOverviewPageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWOverviewPageContentViewController.m; sourceTree = "<group>"; };
 		7258580F1930767F00379E80 /* NWPageContentViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWPageContentViewProtocol.h; sourceTree = "<group>"; };
+		7291DB37194B4896000987F9 /* NWTabItemProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWTabItemProtocol.h; sourceTree = "<group>"; };
 		72F50C6F1949755F00F77184 /* NWAssetDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWAssetDetailsViewController.h; sourceTree = "<group>"; };
 		72F50C701949755F00F77184 /* NWAssetDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWAssetDetailsViewController.m; sourceTree = "<group>"; };
 		72F50C731949803600F77184 /* NWAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWAsset.h; sourceTree = "<group>"; };
@@ -218,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				72F50C72194975B100F77184 /* Details */,
+				7291DB37194B4896000987F9 /* NWTabItemProtocol.h */,
 				7211159E19391E2D00DB5636 /* NWManagePortfolioTabViewController.h */,
 				7211159F19391E2D00DB5636 /* NWManagePortfolioTabViewController.m */,
 				723E411F19485220001EE066 /* NWPortfolioAssetsTableViewController.h */,

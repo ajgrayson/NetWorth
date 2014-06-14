@@ -7,9 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NWTabItemProtocol.h"
 
-@interface NWManagePortfolioTabViewController : UITabBarController
+@class NWManagePortfolioTabViewController;
 
-- (IBAction)addPortfolioItem:(id)sender;
+@protocol NWManagePortfolioTabViewControllerDelegate <NSObject>
+- (void)portfolioDetailsViewControllerDidDone:(NWManagePortfolioTabViewController *)controller;
+@end
+
+@interface NWManagePortfolioTabViewController : UITabBarController<NWTabItemProtocol>
+
+@property (weak, nonatomic) id<NWManagePortfolioTabViewControllerDelegate> delegate2;
+
+-(void)portfolioViewControllerDidDone:(UITableViewController *)controller;
 
 @end

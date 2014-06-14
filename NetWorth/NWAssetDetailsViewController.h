@@ -20,4 +20,11 @@
 
 @property (weak, nonatomic) id<NWAssetDetailsViewControllerDelegate> delegate;
 
+@property (weak, nonatomic) NWAsset *asset;
+
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+
+- (IBAction)cancel:(id)sender;
+- (IBAction)done:(id)sender;
+
 @end

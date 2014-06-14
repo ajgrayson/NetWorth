@@ -10,6 +10,8 @@
 
 @interface NWAsset : NSObject
 
+@property (nonatomic, copy) NSNumber *id;
+
 @property (nonatomic, copy) NSString *name;
 
 @end
