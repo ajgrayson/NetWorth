@@ -7,6 +7,7 @@
 //
 
 #import "NWAssetDetailsViewController.h"
+#import "NWConstants.h"
 
 @interface NWAssetDetailsViewController ()
 
@@ -32,7 +33,8 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     if(self.asset != nil) {
-        self.nameTextField.text = self.asset.name;
+        self.nameTextField.text = [self.asset objectForKey:@"name"];
+        self.valueTextField.text = [self.asset objectForKey:@"value"];
     }
 }
 
@@ -44,18 +46,31 @@
 
 - (void)done:(id)sender
 {
-    NWAsset *asset = [[NWAsset alloc] init];
-    asset.name = self.nameTextField.text;
+    PFObject *asset;
+    
+    if([[self.nameTextField text] length] == 0) return;
+    if([[self.valueTextField text] length] == 0) return;
     
     if(self.asset != nil) {
-        asset.id = self.asset.id;
+        asset = self.asset;
     } else {
-        srandom(time(NULL));
+        asset = [PFObject objectWithClassName:ItemClassName];
         
-        asset.id = [[NSNumber alloc]initWithInt:(arc4random() % 100)];
+        // Create relationship
+        [asset setObject:[self user] forKey:@"author"];
+        [asset setObject:[self account] forKey:@"account"];
+        [asset setObject:AssetTypeName forKey:@"type"];
     }
     
-    [self.delegate assetDetailsViewController:self didSaveAsset:asset];
+    [asset setObject:[self.nameTextField text] forKey:@"name"];
+    [asset setObject:[self.valueTextField text] forKey:@"value"];
+    
+    // Save the new post
+    [asset saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            [self.delegate assetDetailsViewController:self didSaveAsset:asset];
+        }
+    }];
 }
 
 - (void)cancel:(id)sender

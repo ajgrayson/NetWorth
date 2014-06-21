@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "NWAccountDetailsViewController.h"
+#import <Parse/Parse.h>
 
-@interface NWAccountsTableViewController : UITableViewController <NWAccountDetailsViewControllerDelegate>
+@interface NWAccountsTableViewController : UITableViewController <NWAccountDetailsViewControllerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *accounts;
 

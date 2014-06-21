@@ -8,30 +8,36 @@
 
 #import "NWAppDelegate.h"
 #import "NWAccountsTableViewController.h"
-#import "NWAccount.h"
+#import "NWHelper.h"
+#import <Parse/Parse.h>
 
 @implementation NWAppDelegate
 
-NSMutableArray *accounts;
+//NSMutableArray *accounts;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Parse setApplicationId:@"hX7CIZQ8aqJwdxEckyC2BLqoQ43tZBPTdG7A6OXl"
+                  clientKey:@"eypK16SssvfI6JfZDAd4kQKlzHTFYzciKbg1b7fI"];
+    
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
     // Override point for customization after application launch.
-    accounts = [NSMutableArray arrayWithCapacity:2];
+//    accounts = [NSMutableArray arrayWithCapacity:0];
     
-    NWAccount *account = [[NWAccount alloc] init];
-    account.id = [[NSNumber alloc] initWithInt:1];
-    account.name = @"Shared";
-    [accounts addObject:account];
+//    NWAccount *account = [[NWAccount alloc] init];
+//    account.id = [[NSNumber alloc] initWithInt:1];
+//    account.name = @"Shared";
+//    [accounts addObject:account];
+//    
+//    account = [[NWAccount alloc] init];
+//    account.id = [[NSNumber alloc] initWithInt:2];
+//    account.name = @"Demo";
+//    [accounts addObject:account];
     
-    account = [[NWAccount alloc] init];
-    account.id = [[NSNumber alloc] initWithInt:2];
-    account.name = @"Demo";
-    [accounts addObject:account];
-    
-    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-    NWAccountsTableViewController *accountsViewController = [navigationController viewControllers][0];
-    accountsViewController.accounts = accounts;
+//    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+//    NWAccountsTableViewController *accountsViewController = [navigationController viewControllers][0];
+//    accountsViewController.accounts = accounts;
     
     return YES;
 }

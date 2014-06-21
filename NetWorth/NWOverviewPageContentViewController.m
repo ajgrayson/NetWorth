@@ -7,6 +7,7 @@
 //
 
 #import "NWOverviewPageContentViewController.h"
+#import "NWHelper.h"
 
 @interface NWOverviewPageContentViewController ()
 
@@ -28,8 +29,7 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
-    self.titleLabel.text = [[self.account.name stringByAppendingString:@" Networth"] uppercaseString];
-
+    [self loadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -44,5 +44,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)loadData
+{
+    [self.titleLabel setText:[[self.account objectForKey:@"name"] uppercaseString]];
+    
+    [NWHelper getTotalsForInAccount:self.account withBlock:^(NSNumber *totalAssets, NSNumber *totalLiabilities) {
+        NSNumber *netWorth = [[NSNumber alloc] initWithFloat:([totalAssets floatValue]  - [totalLiabilities floatValue])];
+        
+        [self.netWorthTotalLabel setText:[NWHelper formatNumberAsMoney:netWorth]];
+        [self.assetTotalsLabel setText: [NWHelper formatNumberAsMoney:totalAssets]];
+        [self.liabilitiesTotalLabel setText: [NWHelper formatNumberAsMoney:totalLiabilities]];
+    }];
+}
 
 @end

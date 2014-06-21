@@ -25,9 +25,24 @@
 		721168B4193026EA0047DC02 /* NetWorthTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 721168B3193026EA0047DC02 /* NetWorthTests.m */; };
 		721168BF19302BEE0047DC02 /* NWAccountPageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 721168BE19302BEE0047DC02 /* NWAccountPageContentViewController.m */; };
 		723C56E11931BEF20073AE8E /* NWAccountsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723C56E01931BEF20073AE8E /* NWAccountsTableViewController.m */; };
-		723C56E41931C6620073AE8E /* NWAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 723C56E31931C6620073AE8E /* NWAccount.m */; };
+		723C56E41931C6620073AE8E /* NWHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 723C56E31931C6620073AE8E /* NWHelper.m */; };
 		723E412119485220001EE066 /* NWPortfolioAssetsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723E412019485220001EE066 /* NWPortfolioAssetsTableViewController.m */; };
 		7258580E1930657100379E80 /* NWOverviewPageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7258580D1930657100379E80 /* NWOverviewPageContentViewController.m */; };
+		72E79CA81954FB7400E3C915 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E79CA71954FB7400E3C915 /* Parse.framework */; };
+		72E79CAA1954FBBB00E3C915 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E79CA91954FBBB00E3C915 /* AudioToolbox.framework */; };
+		72E79CAC1954FBC600E3C915 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E79CAB1954FBC600E3C915 /* CFNetwork.framework */; };
+		72E79CAE1954FBD800E3C915 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E79CAD1954FBD800E3C915 /* CoreLocation.framework */; };
+		72E79CB01954FBE300E3C915 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E79CAF1954FBE300E3C915 /* libz.dylib */; };
+		72E79CB21954FBEC00E3C915 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E79CB11954FBEC00E3C915 /* MobileCoreServices.framework */; };
+		72E79CB41954FBF800E3C915 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E79CB31954FBF800E3C915 /* QuartzCore.framework */; };
+		72E79CB61954FC0400E3C915 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E79CB51954FC0300E3C915 /* Security.framework */; };
+		72E79CB81954FC0B00E3C915 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E79CB71954FC0B00E3C915 /* StoreKit.framework */; };
+		72E79CBA1954FC1500E3C915 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E79CB91954FC1500E3C915 /* SystemConfiguration.framework */; };
+		72E79CBC195517AF00E3C915 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E79CBB195517AF00E3C915 /* Social.framework */; };
+		72E79CBE195517BF00E3C915 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E79CBD195517BF00E3C915 /* AssetsLibrary.framework */; };
+		72E79CC0195517C700E3C915 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E79CBF195517C700E3C915 /* Accounts.framework */; };
+		72E79CC5195557FB00E3C915 /* NWLiabilityDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72E79CC4195557FB00E3C915 /* NWLiabilityDetailsViewController.m */; };
+		72E79CC8195559E700E3C915 /* NWPortfolioLiabilitiesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72E79CC7195559E700E3C915 /* NWPortfolioLiabilitiesTableViewController.m */; };
 		72F50C711949755F00F77184 /* NWAssetDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F50C701949755F00F77184 /* NWAssetDetailsViewController.m */; };
 		72F50C751949803600F77184 /* NWAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F50C741949803600F77184 /* NWAsset.m */; };
 /* End PBXBuildFile section */
@@ -70,14 +85,32 @@
 		721168BE19302BEE0047DC02 /* NWAccountPageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWAccountPageContentViewController.m; sourceTree = "<group>"; };
 		723C56DF1931BEF20073AE8E /* NWAccountsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NWAccountsTableViewController.h; path = ../NWAccountsTableViewController.h; sourceTree = "<group>"; };
 		723C56E01931BEF20073AE8E /* NWAccountsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NWAccountsTableViewController.m; path = ../NWAccountsTableViewController.m; sourceTree = "<group>"; };
-		723C56E21931C6620073AE8E /* NWAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWAccount.h; sourceTree = "<group>"; };
-		723C56E31931C6620073AE8E /* NWAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWAccount.m; sourceTree = "<group>"; };
+		723C56E21931C6620073AE8E /* NWHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWHelper.h; sourceTree = "<group>"; };
+		723C56E31931C6620073AE8E /* NWHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWHelper.m; sourceTree = "<group>"; };
 		723E411F19485220001EE066 /* NWPortfolioAssetsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWPortfolioAssetsTableViewController.h; sourceTree = "<group>"; };
 		723E412019485220001EE066 /* NWPortfolioAssetsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWPortfolioAssetsTableViewController.m; sourceTree = "<group>"; };
 		7258580C1930657100379E80 /* NWOverviewPageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWOverviewPageContentViewController.h; sourceTree = "<group>"; };
 		7258580D1930657100379E80 /* NWOverviewPageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWOverviewPageContentViewController.m; sourceTree = "<group>"; };
 		7258580F1930767F00379E80 /* NWPageContentViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWPageContentViewProtocol.h; sourceTree = "<group>"; };
 		7291DB37194B4896000987F9 /* NWTabItemProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWTabItemProtocol.h; sourceTree = "<group>"; };
+		72E79CA71954FB7400E3C915 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		72E79CA91954FBBB00E3C915 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		72E79CAB1954FBC600E3C915 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		72E79CAD1954FBD800E3C915 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		72E79CAF1954FBE300E3C915 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		72E79CB11954FBEC00E3C915 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		72E79CB31954FBF800E3C915 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		72E79CB51954FC0300E3C915 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		72E79CB71954FC0B00E3C915 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		72E79CB91954FC1500E3C915 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		72E79CBB195517AF00E3C915 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		72E79CBD195517BF00E3C915 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		72E79CBF195517C700E3C915 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		72E79CC119554D8900E3C915 /* NWConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWConstants.h; sourceTree = "<group>"; };
+		72E79CC3195557FB00E3C915 /* NWLiabilityDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWLiabilityDetailsViewController.h; sourceTree = "<group>"; };
+		72E79CC4195557FB00E3C915 /* NWLiabilityDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWLiabilityDetailsViewController.m; sourceTree = "<group>"; };
+		72E79CC6195559E700E3C915 /* NWPortfolioLiabilitiesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWPortfolioLiabilitiesTableViewController.h; sourceTree = "<group>"; };
+		72E79CC7195559E700E3C915 /* NWPortfolioLiabilitiesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWPortfolioLiabilitiesTableViewController.m; sourceTree = "<group>"; };
 		72F50C6F1949755F00F77184 /* NWAssetDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWAssetDetailsViewController.h; sourceTree = "<group>"; };
 		72F50C701949755F00F77184 /* NWAssetDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWAssetDetailsViewController.m; sourceTree = "<group>"; };
 		72F50C731949803600F77184 /* NWAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWAsset.h; sourceTree = "<group>"; };
@@ -89,8 +122,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72E79CC0195517C700E3C915 /* Accounts.framework in Frameworks */,
+				72E79CBE195517BF00E3C915 /* AssetsLibrary.framework in Frameworks */,
+				72E79CBC195517AF00E3C915 /* Social.framework in Frameworks */,
+				72E79CBA1954FC1500E3C915 /* SystemConfiguration.framework in Frameworks */,
+				72E79CB81954FC0B00E3C915 /* StoreKit.framework in Frameworks */,
+				72E79CB61954FC0400E3C915 /* Security.framework in Frameworks */,
+				72E79CB41954FBF800E3C915 /* QuartzCore.framework in Frameworks */,
+				72E79CB21954FBEC00E3C915 /* MobileCoreServices.framework in Frameworks */,
+				72E79CB01954FBE300E3C915 /* libz.dylib in Frameworks */,
+				72E79CAE1954FBD800E3C915 /* CoreLocation.framework in Frameworks */,
 				72116888193026EA0047DC02 /* CoreGraphics.framework in Frameworks */,
+				72E79CAC1954FBC600E3C915 /* CFNetwork.framework in Frameworks */,
+				72E79CAA1954FBBB00E3C915 /* AudioToolbox.framework in Frameworks */,
 				7211688A193026EA0047DC02 /* UIKit.framework in Frameworks */,
+				72E79CA81954FB7400E3C915 /* Parse.framework in Frameworks */,
 				72116886193026EA0047DC02 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -130,6 +176,19 @@
 		72116884193026EA0047DC02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				72E79CBF195517C700E3C915 /* Accounts.framework */,
+				72E79CBD195517BF00E3C915 /* AssetsLibrary.framework */,
+				72E79CBB195517AF00E3C915 /* Social.framework */,
+				72E79CB91954FC1500E3C915 /* SystemConfiguration.framework */,
+				72E79CB71954FC0B00E3C915 /* StoreKit.framework */,
+				72E79CB51954FC0300E3C915 /* Security.framework */,
+				72E79CB31954FBF800E3C915 /* QuartzCore.framework */,
+				72E79CB11954FBEC00E3C915 /* MobileCoreServices.framework */,
+				72E79CAF1954FBE300E3C915 /* libz.dylib */,
+				72E79CAD1954FBD800E3C915 /* CoreLocation.framework */,
+				72E79CAB1954FBC600E3C915 /* CFNetwork.framework */,
+				72E79CA91954FBBB00E3C915 /* AudioToolbox.framework */,
+				72E79CA71954FB7400E3C915 /* Parse.framework */,
 				72116885193026EA0047DC02 /* Foundation.framework */,
 				72116887193026EA0047DC02 /* CoreGraphics.framework */,
 				72116889193026EA0047DC02 /* UIKit.framework */,
@@ -197,10 +256,11 @@
 		7281645D193AA25500191434 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				723C56E21931C6620073AE8E /* NWAccount.h */,
-				723C56E31931C6620073AE8E /* NWAccount.m */,
+				723C56E21931C6620073AE8E /* NWHelper.h */,
+				723C56E31931C6620073AE8E /* NWHelper.m */,
 				72F50C731949803600F77184 /* NWAsset.h */,
 				72F50C741949803600F77184 /* NWAsset.m */,
+				72E79CC119554D8900E3C915 /* NWConstants.h */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -224,6 +284,8 @@
 				7211159F19391E2D00DB5636 /* NWManagePortfolioTabViewController.m */,
 				723E411F19485220001EE066 /* NWPortfolioAssetsTableViewController.h */,
 				723E412019485220001EE066 /* NWPortfolioAssetsTableViewController.m */,
+				72E79CC6195559E700E3C915 /* NWPortfolioLiabilitiesTableViewController.h */,
+				72E79CC7195559E700E3C915 /* NWPortfolioLiabilitiesTableViewController.m */,
 			);
 			name = ManagePortfolio;
 			sourceTree = "<group>";
@@ -245,6 +307,8 @@
 			children = (
 				72F50C6F1949755F00F77184 /* NWAssetDetailsViewController.h */,
 				72F50C701949755F00F77184 /* NWAssetDetailsViewController.m */,
+				72E79CC3195557FB00E3C915 /* NWLiabilityDetailsViewController.h */,
+				72E79CC4195557FB00E3C915 /* NWLiabilityDetailsViewController.m */,
 			);
 			name = Details;
 			sourceTree = "<group>";
@@ -348,8 +412,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				723E412119485220001EE066 /* NWPortfolioAssetsTableViewController.m in Sources */,
-				723C56E41931C6620073AE8E /* NWAccount.m in Sources */,
+				723C56E41931C6620073AE8E /* NWHelper.m in Sources */,
 				7258580E1930657100379E80 /* NWOverviewPageContentViewController.m in Sources */,
+				72E79CC5195557FB00E3C915 /* NWLiabilityDetailsViewController.m in Sources */,
 				721168BF19302BEE0047DC02 /* NWAccountPageContentViewController.m in Sources */,
 				723C56E11931BEF20073AE8E /* NWAccountsTableViewController.m in Sources */,
 				72F50C751949803600F77184 /* NWAsset.m in Sources */,
@@ -357,6 +422,7 @@
 				721115A019391E2D00DB5636 /* NWManagePortfolioTabViewController.m in Sources */,
 				72F50C711949755F00F77184 /* NWAssetDetailsViewController.m in Sources */,
 				72116892193026EA0047DC02 /* main.m in Sources */,
+				72E79CC8195559E700E3C915 /* NWPortfolioLiabilitiesTableViewController.m in Sources */,
 				72116896193026EA0047DC02 /* NWAppDelegate.m in Sources */,
 				7211159D1939196500DB5636 /* NWAccountDetailsViewController.m in Sources */,
 			);
@@ -485,6 +551,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NetWorth/NetWorth-Prefix.pch";
 				INFOPLIST_FILE = "NetWorth/NetWorth-Info.plist";
@@ -500,6 +570,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NetWorth/NetWorth-Prefix.pch";
 				INFOPLIST_FILE = "NetWorth/NetWorth-Info.plist";

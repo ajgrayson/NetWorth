@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NWAccount.h"
+#import <Parse/Parse.h>
+
+//#import "NWAccount.h"
 
 @class NWAccountDetailsViewController;
 
 @protocol NWAccountDetailsViewControllerDelegate <NSObject>
 - (void)accountDetailsViewControllerDidCancel:(NWAccountDetailsViewController *)controller;
-- (void)accountDetailsViewController:(NWAccountDetailsViewController *)controller didAddAccount:(NWAccount *)account;
+- (void)accountDetailsViewController:(NWAccountDetailsViewController *)controller didSaveAccount:(PFObject *)account;
 @end
 
 @interface NWAccountDetailsViewController : UIViewController
@@ -22,11 +24,12 @@
 
 @property (weak, nonatomic) id <NWAccountDetailsViewControllerDelegate> delegate;
 
-@property (weak, nonatomic) NWAccount *data;
+@property (weak, nonatomic) PFObject *data;
 
 - (IBAction)cancel:(id)sender;
+
 - (IBAction)done:(id)sender;
 
-- (void)setData:(NWAccount *)account;
+- (void)setData:(PFObject *)account;
 
 @end

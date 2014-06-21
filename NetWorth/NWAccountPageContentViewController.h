@@ -8,12 +8,23 @@
 
 #import <UIKit/UIKit.h>
 #import "NWPageContentViewProtocol.h"
+#import <Parse/Parse.h>
 
 @interface NWAccountPageContentViewController : UIViewController <NWPageContentViewProtocol>
 
 @property (weak, nonatomic) IBOutlet UILabel *label;
 
+@property (weak, nonatomic) IBOutlet UILabel *assetTotalLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *netWorthTotalLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *liabilitiesTotalLabel;
+
 @property NSUInteger pageIndex;
+
+@property (strong, nonatomic) PFObject *user;
+
+@property (strong, nonatomic) PFObject *account;
 
 @property (strong, nonatomic) UINavigationItem *navItem;
 

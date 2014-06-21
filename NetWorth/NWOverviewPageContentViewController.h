@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "NWPageContentViewProtocol.h"
-#import "NWAccount.h"
+#import <Parse/Parse.h>
 
 @interface NWOverviewPageContentViewController : UIViewController <NWPageContentViewProtocol>
 
@@ -22,7 +22,9 @@
 
 @property NSUInteger pageIndex;
 
-@property (strong, nonatomic) NWAccount *account;
+@property (strong, nonatomic) PFObject *user;
+
+@property (strong, nonatomic) PFObject *account;
 
 @property (strong, nonatomic) UINavigationItem *navItem;
 

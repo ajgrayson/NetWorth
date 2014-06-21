@@ -7,7 +7,9 @@
 //
 
 #import "NWPortfolioAssetsTableViewController.h"
-#import "NWAsset.h"
+#import "NWManagePortfolioTabViewController.h"
+#import "NWHelper.h"
+#import "NWConstants.h"
 
 @interface NWPortfolioAssetsTableViewController ()
 
@@ -20,7 +22,6 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         // Custom initialization
-        self.assets = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -34,6 +35,13 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    UINavigationController *nc = (UINavigationController *)[self parentViewController];
+    NWManagePortfolioTabViewController *tabView = (NWManagePortfolioTabViewController *)[nc parentViewController];
+    self.account = tabView.account;
+    self.user = tabView.user;
+    
+    [self loadAssets];
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,10 +65,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AssetCell" forIndexPath:indexPath];
-    
-    NWAsset *asset = (self.assets)[indexPath.row];
-    cell.textLabel.text = asset.name;
-    
+
+    PFObject *asset = [self.assets objectAtIndex:indexPath.row];
+    [cell.textLabel setText:[asset objectForKey:@"name"]];
+    [cell.detailTextLabel setText:[asset objectForKey:@"value"]];
     return cell;
 }
 
@@ -70,6 +78,8 @@
         NWAssetDetailsViewController *viewController = segue.destinationViewController;
         
         viewController.delegate = self;
+        viewController.user = [self user];
+        viewController.account = [self account];
     } else if ([segue.identifier isEqualToString:@"EditAsset"]) {
         NWAssetDetailsViewController *viewController = segue.destinationViewController;
         
@@ -77,10 +87,32 @@
 
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         
-        NWAsset *asset = [self.assets objectAtIndex:indexPath.row];
+        PFObject *asset = [self.assets objectAtIndex:indexPath.row];
         
         viewController.asset = asset;
+        viewController.user = [self user];
+        viewController.account = [self account];
     }
+}
+
+- (void)loadAssets
+{
+    self.assets = [NSMutableArray arrayWithCapacity:0];
+    
+    PFQuery *postQuery = [PFQuery queryWithClassName:ItemClassName];
+    
+    // Follow relationship
+    [postQuery whereKey:@"author" equalTo:[PFUser currentUser]];
+    [postQuery whereKey:@"account" equalTo:[self account]];
+    [postQuery whereKey:@"type" equalTo:AssetTypeName];
+    
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            [self.assets removeAllObjects];           // Store results
+            [self.assets addObjectsFromArray:objects];
+            [self.tableView reloadData];   // Reload table
+        }
+    }];
 }
 
 - (IBAction)done:(id)sender
@@ -95,24 +127,9 @@
     [[self navigationController] popViewControllerAnimated:YES];
 }
 
-- (void)assetDetailsViewController:(NWAssetDetailsViewController *)controller didSaveAsset:(NWAsset *)asset
+- (void)assetDetailsViewController:(NWAssetDetailsViewController *)controller didSaveAsset:(PFObject *)asset
 {
-    bool found = NO;
-    for (int i = 0; i < self.assets.count; i++) {
-        NWAsset *ac = [self.assets objectAtIndex:i];
-        if(ac.id == asset.id) {
-            ac.name = asset.name;
-            found = YES;
-            [self.tableView reloadData];
-        }
-    }
-    
-    if(!found) {
-        [self.assets addObject:asset];
-        
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.assets count] - 1) inSection:0];
-        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
+    [self loadAssets];
     
     [[self navigationController] popViewControllerAnimated:YES];
 }

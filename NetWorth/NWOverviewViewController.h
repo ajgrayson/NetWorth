@@ -7,16 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NWAccount.h"
+#import "NWHelper.h"
 #import "NWManagePortfolioTabViewController.h"
+#import <Parse/Parse.h>
 
 @interface NWOverviewViewController : UIViewController  <UIPageViewControllerDataSource, NWManagePortfolioTabViewControllerDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 
-@property (strong, nonatomic) NSArray *pageTitles;
+@property NSInteger *curentIndex;
 
-@property (strong, nonatomic) NWAccount *account;
+@property (strong, nonatomic) NSArray *users;
+
+@property (strong, nonatomic) PFObject *account;
 
 @property (strong, nonatomic) UINavigationItem *navItem;
 

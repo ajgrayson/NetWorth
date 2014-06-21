@@ -7,6 +7,7 @@
 //
 
 #import "NWAccountDetailsViewController.h"
+#import "NWConstants.h"
 
 @interface NWAccountDetailsViewController ()
 
@@ -32,7 +33,8 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     if(self.data != nil) {
-        self.nameTextField.text = self.data.name;
+        //[cell.textLabel setText:[post objectForKey:@"textContent"]];
+        self.nameTextField.text = [self.data objectForKey:@"name"];
     }
 }
 
@@ -50,25 +52,38 @@
 
 - (IBAction)done:(id)sender
 {
-    NWAccount *account = [[NWAccount alloc] init];
-    account.name = self.nameTextField.text;
+    PFObject *account;
     
     if(self.data != nil) {
-        account.id = self.data.id;
+        account = self.data;
+    } else {
+        account = [PFObject objectWithClassName:AccountClassName];
+        
+        // Create relationship
+        [account setObject:[PFUser currentUser] forKey:@"author"];
     }
     
-    [self.delegate accountDetailsViewController:self didAddAccount:account];
+    [account setObject:[self.nameTextField text] forKey:@"name"];
+    
+    // Save the new post
+    //[self showLoading];
+    [account saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            [self.delegate accountDetailsViewController:self didSaveAccount:account];
+        }
+    }];
 }
 
-/*
-#pragma mark - Navigation
+//- (void)showLoading
+//{
+//    UIActivityIndicatorView *activityView=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+//    
+//    activityView.center = self.view.center;
+//    
+//    [activityView startAnimating];
+//    
+//    [self.view addSubview:activityView];
+//}
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

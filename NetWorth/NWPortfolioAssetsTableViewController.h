@@ -9,10 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "NWTabItemProtocol.h"
 #import "NWAssetDetailsViewController.h"
+#import <Parse/Parse.h>
 
 @interface NWPortfolioAssetsTableViewController : UITableViewController<NWAssetDetailsViewControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *assets;
+
+@property (nonatomic, strong) PFObject *user;
+
+@property (nonatomic, strong) PFObject *account;
 
 @property (nonatomic, strong) UITabBarController<NWTabItemProtocol> *delegate;
 

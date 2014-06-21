@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Johnathan Grayson. All rights reserved.
 //
 
-#import "NWAccount.h"
 #import "NWAccountsTableViewController.h"
 #import "NWOverviewViewController.h"
+#import "NWConstants.h"
 
 @interface NWAccountsTableViewController ()
 
@@ -36,6 +36,118 @@
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (![PFUser currentUser]) { // No user logged in
+        // Create the log in view controller
+        PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
+        [logInViewController setDelegate:self]; // Set ourselves as the delegate
+        [logInViewController setFields:PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton | PFLogInFieldsUsernameAndPassword | PFLogInFieldsPasswordForgotten];
+        
+        // Create the sign up view controller
+        PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
+        [signUpViewController setDelegate:self]; // Set ourselves as the delegate
+        
+        // Assign our sign up controller to be displayed from the login controller
+        [logInViewController setSignUpController:signUpViewController];
+        
+        // Present the log in view controller
+        [self presentViewController:logInViewController animated:YES completion:NULL];
+    } else {
+        [self loadAccounts];
+    }
+}
+
+// Sent to the delegate to determine whether the log in request should be submitted to the server.
+- (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
+    // Check if both fields are completed
+    if (username && password && username.length != 0 && password.length != 0) {
+        return YES; // Begin login process
+    }
+    
+    [[[UIAlertView alloc] initWithTitle:@"Missing Information"
+                                message:@"Make sure you fill out all of the information!"
+                               delegate:nil
+                      cancelButtonTitle:@"ok"
+                      otherButtonTitles:nil] show];
+    return NO; // Interrupt login process
+}
+
+// Sent to the delegate when a PFUser is logged in.
+- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
+    [self dismissViewControllerAnimated:YES completion:NULL];
+    [self loadAccounts];
+}
+
+// Sent to the delegate when the log in attempt fails.
+- (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
+    NSLog(@"Failed to log in...");
+}
+
+// Sent to the delegate when the log in screen is dismissed.
+- (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+// Sent to the delegate to determine whether the sign up request should be submitted to the server.
+- (BOOL)signUpViewController:(PFSignUpViewController *)signUpController shouldBeginSignUp:(NSDictionary *)info {
+    BOOL informationComplete = YES;
+    
+    // loop through all of the submitted data
+    for (id key in info) {
+        NSString *field = [info objectForKey:key];
+        if (!field || field.length == 0) { // check completion
+            informationComplete = NO;
+            break;
+        }
+    }
+    
+    // Display an alert if a field wasn't completed
+    if (!informationComplete) {
+        [[[UIAlertView alloc] initWithTitle:@"Missing Information"
+                                    message:@"Make sure you fill out all of the information!"
+                                   delegate:nil
+                          cancelButtonTitle:@"ok"
+                          otherButtonTitles:nil] show];
+    }
+    
+    return informationComplete;
+}
+
+// Sent to the delegate when a PFUser is signed up.
+- (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
+    [self dismissViewControllerAnimated:YES completion:NULL]; // Dismiss the PFSignUpViewController
+}
+
+// Sent to the delegate when the sign up attempt fails.
+- (void)signUpViewController:(PFSignUpViewController *)signUpController didFailToSignUpWithError:(NSError *)error {
+    NSLog(@"Failed to sign up...");
+}
+
+// Sent to the delegate when the sign up screen is dismissed.
+- (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController {
+    NSLog(@"User dismissed the signUpViewController");
+}
+
+- (void)loadAccounts
+{
+    self.accounts = [NSMutableArray arrayWithCapacity:0];
+    
+    PFQuery *postQuery = [PFQuery queryWithClassName:AccountClassName];
+    
+    // Follow relationship
+    [postQuery whereKey:@"author" equalTo:[PFUser currentUser]];
+    
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            [self.accounts removeAllObjects];           // Store results
+            [self.accounts addObjectsFromArray:objects];
+            [self.tableView reloadData];   // Reload table
+        }
+    }];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -58,8 +170,8 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccountCell" forIndexPath:indexPath];
     
-    NWAccount *account = (self.accounts)[indexPath.row];
-    cell.textLabel.text = account.name;
+    PFObject *account = [self.accounts objectAtIndex:indexPath.row];
+    [cell.textLabel setText:[account objectForKey:@"name"]];
     
     return cell;
 }
@@ -78,13 +190,13 @@
         
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         
-        NWAccount *account = [self.accounts objectAtIndex:indexPath.row];
+        PFObject *account = [self.accounts objectAtIndex:indexPath.row];
         
         accountDetailsViewController.data = account;
     } else if([segue.identifier isEqualToString:@"OpenAccount"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         
-        NWAccount *account = [self.accounts objectAtIndex:indexPath.row];
+        PFObject *account = [self.accounts objectAtIndex:indexPath.row];
         
         NWOverviewViewController *viewController = segue.destinationViewController;
         viewController.account = account;
@@ -101,42 +213,29 @@
     }
 }
 
-- (void)accountDetailsViewControllerDidCancel:(NWAccountDetailsViewController *)controller
-{
-    [[self navigationController] popViewControllerAnimated:YES];
-}
-
-- (void)accountDetailsViewController:(NWAccountDetailsViewController *)controller didAddAccount:(NWAccount *)account
-{
-    bool found = NO;
-    for (int i = 0; i < self.accounts.count; i++) {
-        NWAccount *ac = [self.accounts objectAtIndex:i];
-        if(ac.id == account.id) {
-            ac.name = account.name;
-            found = true;
-            [self.tableView reloadData];
-        }
-    }
-    
-    if(!found) {
-        [self.accounts addObject:account];
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.accounts count] - 1) inSection:0];
-        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
-    
-    [[self navigationController] popViewControllerAnimated:YES];
-}
-
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [self.accounts removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        //[self.accounts removeObjectAtIndex:indexPath.row];
+        //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
+
+- (void)accountDetailsViewControllerDidCancel:(NWAccountDetailsViewController *)controller
+{
+    [[self navigationController] popViewControllerAnimated:YES];
+}
+
+- (void)accountDetailsViewController:(NWAccountDetailsViewController *)controller didSaveAccount:(PFObject *)account
+{
+    
+    [[self navigationController] popViewControllerAnimated:YES];
+    [self loadAccounts];
+}
+
 
 @end

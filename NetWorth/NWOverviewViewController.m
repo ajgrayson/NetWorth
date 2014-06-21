@@ -28,7 +28,8 @@
     pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
     pageControl.backgroundColor = [UIColor whiteColor];
     
-    self.pageTitles = @[@"Page 1", @"Page 2", @"Page 3"];
+    PFObject *u = [self.account objectForKey:@"author"];
+    self.users = [[NSArray alloc] initWithObjects:u, nil];
     
     // Create page view controller
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
@@ -56,7 +57,7 @@
 
 - (UIViewController<NWPageContentViewProtocol> *)viewControllerAtIndex:(NSUInteger)index
 {
-    if (([self.pageTitles count] == 0) || (index >= [self.pageTitles count])) {
+    if (index > [self.users count]) {
         return nil;
     }
     
@@ -74,6 +75,8 @@
         NWAccountPageContentViewController *pageContentViewController2 = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
         
         pageContentViewController2.pageIndex = index;
+        pageContentViewController2.account = self.account;
+        pageContentViewController2.user = [self.users objectAtIndex:index-1];
         pageContentViewController2.navItem = self.navigationItem;
         
         return pageContentViewController2;
@@ -102,7 +105,7 @@
     }
     
     index++;
-    if (index == [self.pageTitles count]) {
+    if (index > [self.users count]) {
         return nil;
     }
     return [self viewControllerAtIndex:index];
@@ -110,7 +113,7 @@
 
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
 {
-    return [self.pageTitles count];
+    return [self.users count] + 1;
 }
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
@@ -120,10 +123,14 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    NWAccountPageContentViewController *vc = (NWAccountPageContentViewController *)[[self.pageViewController viewControllers] objectAtIndex:0];
+    
     if([segue.identifier isEqualToString:@"ManagePortfolio"]) {
-        NWManagePortfolioTabViewController *viewController = segue.destinationViewController;
+        NWManagePortfolioTabViewController *destinationViewController = segue.destinationViewController;
         
-        viewController.delegate2 = self;
+        destinationViewController.delegate2 = self;
+        destinationViewController.user = [self.users objectAtIndex:vc.pageIndex - 1];
+        destinationViewController.account = self.account;
     }
 }
 
