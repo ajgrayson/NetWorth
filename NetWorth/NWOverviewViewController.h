@@ -10,8 +10,9 @@
 #import "NWHelper.h"
 #import "NWManagePortfolioTabViewController.h"
 #import <Parse/Parse.h>
+#import "NWAccountDetailsViewController.h"
 
-@interface NWOverviewViewController : UIViewController  <UIPageViewControllerDataSource, NWManagePortfolioTabViewControllerDelegate>
+@interface NWOverviewViewController : UIViewController  <UIPageViewControllerDataSource, NWManagePortfolioTabViewControllerDelegate, NWAccountDetailsViewControllerDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 
@@ -22,6 +23,8 @@
 @property (strong, nonatomic) PFObject *account;
 
 @property (strong, nonatomic) UINavigationItem *navItem;
+
+- (IBAction)manage:(id)sender;
 
 - (void)portfolioDetailsViewControllerDidDone:(NWManagePortfolioTabViewController *)controller;
 

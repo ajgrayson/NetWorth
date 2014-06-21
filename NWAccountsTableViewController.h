@@ -14,4 +14,6 @@
 
 @property (nonatomic, strong) NSMutableArray *accounts;
 
+@property BOOL loading;
+
 @end

@@ -21,11 +21,15 @@
                     <navigationItem key="navigationItem" id="OqP-aq-FZg">
                         <barButtonItem key="rightBarButtonItem" title="Manage" id="Bh8-0p-HX4">
                             <connections>
-                                <segue destination="uhm-li-UN2" kind="modal" identifier="ManagePortfolio" id="vrk-tC-sA4"/>
+                                <action selector="manage:" destination="vXZ-lx-hvc" id="zOB-O8-lCq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="uhm-li-UN2" kind="modal" identifier="ManagePortfolio" id="9bb-Mc-tqm"/>
+                        <segue destination="6f2-k4-pO6" kind="push" identifier="EditAccount" id="uiG-JN-c1a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -64,7 +68,7 @@
                                 <action selector="cancel:" destination="6f2-k4-pO6" id="Bmf-JW-H44"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Kra-9f-NWp">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Kra-9f-NWp">
                             <connections>
                                 <action selector="done:" destination="6f2-k4-pO6" id="U7v-km-7Ha"/>
                             </connections>
@@ -76,7 +80,40 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LZY-El-bgs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1272" y="-660"/>
+            <point key="canvasLocation" x="1806" y="-325"/>
+        </scene>
+        <!--Settings View Controller - Settings-->
+        <scene sceneID="9oI-yq-UWx">
+            <objects>
+                <viewController title="Settings" id="FnP-jY-y5A" customClass="NWSettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Iad-YZ-Ob7"/>
+                        <viewControllerLayoutGuide type="bottom" id="5VG-ue-X0W"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="i1G-xg-w0D">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ZU-t4-DoH">
+                                <rect key="frame" x="111" y="269" width="99" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="LOGOUT">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logout:" destination="FnP-jY-y5A" eventType="touchUpInside" id="hI1-vi-jiD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AtE-aP-eBH">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="DUX-Oa-4gY"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZ1-Q9-tVE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1272" y="-955"/>
         </scene>
         <!--Accounts Table View Controller - Accounts-->
         <scene sceneID="VPH-fe-UEG">
@@ -105,12 +142,18 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="K9a-EK-PLW" id="bRM-qj-ebE"/>
                             <outlet property="delegate" destination="K9a-EK-PLW" id="5Yc-q0-HNf"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Accounts" id="KOb-Ds-cX7">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="7IQ-VU-XSv">
+                            <connections>
+                                <segue destination="FnP-jY-y5A" kind="push" id="SPt-7R-FiB"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="8Gh-7K-sRA">
                             <connections>
                                 <segue destination="6f2-k4-pO6" kind="push" identifier="AddAccount" id="miI-XY-W2O"/>
@@ -119,7 +162,6 @@
                     </navigationItem>
                     <connections>
                         <segue destination="vXZ-lx-hvc" kind="push" identifier="OpenAccount" id="fqD-EF-3E4"/>
-                        <segue destination="6f2-k4-pO6" kind="push" identifier="EditAccount" id="Hds-yu-dab"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="08Y-xI-2UF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -271,7 +313,7 @@
                                 <action selector="cancel:" destination="oDd-08-Z6j" id="tRB-4A-Kxe"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="jIL-GK-3TN">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="jIL-GK-3TN">
                             <connections>
                                 <action selector="done:" destination="oDd-08-Z6j" id="AaM-Af-Ptq"/>
                             </connections>
@@ -391,7 +433,7 @@
                                 <action selector="cancel:" destination="viy-cr-sLj" id="48j-0G-GIQ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="epE-Pa-gsR">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="epE-Pa-gsR">
                             <connections>
                                 <action selector="done:" destination="viy-cr-sLj" id="DXX-cY-iZd"/>
                             </connections>
@@ -598,7 +640,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Hds-yu-dab"/>
+        <segue reference="miI-XY-W2O"/>
         <segue reference="7tq-kk-XB5"/>
         <segue reference="bRH-AG-wd0"/>
     </inferredMetricsTieBreakers>

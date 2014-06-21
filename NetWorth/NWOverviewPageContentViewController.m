@@ -29,13 +29,13 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
-    [self loadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.navItem.rightBarButtonItem.title = @"";
+    self.navItem.rightBarButtonItem.title = @"Edit";
+    [self loadData];
 }
 
 - (void)didReceiveMemoryWarning

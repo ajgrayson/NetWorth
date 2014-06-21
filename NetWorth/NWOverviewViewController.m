@@ -45,8 +45,11 @@
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
-    
-    self.navigationItem.rightBarButtonItem.title = @"";
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    self.navigationItem.rightBarButtonItem.title = @"Edit";
 }
 
 - (void)didReceiveMemoryWarning
@@ -131,12 +134,36 @@
         destinationViewController.delegate2 = self;
         destinationViewController.user = [self.users objectAtIndex:vc.pageIndex - 1];
         destinationViewController.account = self.account;
+    } else if ([segue.identifier isEqualToString:@"EditAccount"]) {
+        NWAccountDetailsViewController *accountDetailsViewController = segue.destinationViewController;
+        
+        accountDetailsViewController.delegate = self;
+        accountDetailsViewController.data = self.account;
+    }
+}
+
+- (IBAction)manage:(id)sender
+{
+    if([self.navigationItem.rightBarButtonItem.title isEqualToString:@"Edit"]) {
+        [self performSegueWithIdentifier:@"EditAccount" sender:self];//IndexPath as sender
+    } else {
+        [self performSegueWithIdentifier:@"ManagePortfolio" sender:self];//IndexPath as sender
     }
 }
 
 - (void)portfolioDetailsViewControllerDidDone:(NWManagePortfolioTabViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)accountDetailsViewControllerDidCancel:(NWAccountDetailsViewController *)controller
+{
+    [[self navigationController] popViewControllerAnimated:YES];
+}
+
+-(void) accountDetailsViewController:(NWAccountDetailsViewController *)controller didSaveAccount:(PFObject *)account
+{
+    [[self navigationController] popViewControllerAnimated:YES];
 }
 
 @end

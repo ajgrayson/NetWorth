@@ -33,7 +33,7 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -132,6 +132,8 @@
 
 - (void)loadAccounts
 {
+    self.loading = YES;
+    
     self.accounts = [NSMutableArray arrayWithCapacity:0];
     
     PFQuery *postQuery = [PFQuery queryWithClassName:AccountClassName];
@@ -145,6 +147,7 @@
             [self.accounts addObjectsFromArray:objects];
             [self.tableView reloadData];   // Reload table
         }
+        self.loading = NO;
     }];
 }
 
@@ -183,16 +186,6 @@
         
         accountDetailsViewController.delegate = self;
         
-    } else if ([segue.identifier isEqualToString:@"EditAccount"]) {
-        NWAccountDetailsViewController *accountDetailsViewController = segue.destinationViewController;
-        
-        accountDetailsViewController.delegate = self;
-        
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        
-        PFObject *account = [self.accounts objectAtIndex:indexPath.row];
-        
-        accountDetailsViewController.data = account;
     } else if([segue.identifier isEqualToString:@"OpenAccount"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         
@@ -206,6 +199,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if(self.loading)return;
+    
     if(self.tableView.editing == YES) {
         [self performSegueWithIdentifier:@"EditAccount" sender:indexPath];//IndexPath as sender
     } else {

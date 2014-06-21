@@ -43,6 +43,7 @@
 		72E79CC0195517C700E3C915 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E79CBF195517C700E3C915 /* Accounts.framework */; };
 		72E79CC5195557FB00E3C915 /* NWLiabilityDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72E79CC4195557FB00E3C915 /* NWLiabilityDetailsViewController.m */; };
 		72E79CC8195559E700E3C915 /* NWPortfolioLiabilitiesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72E79CC7195559E700E3C915 /* NWPortfolioLiabilitiesTableViewController.m */; };
+		72E79CCB19559C5900E3C915 /* NWSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72E79CCA19559C5900E3C915 /* NWSettingsViewController.m */; };
 		72F50C711949755F00F77184 /* NWAssetDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F50C701949755F00F77184 /* NWAssetDetailsViewController.m */; };
 		72F50C751949803600F77184 /* NWAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F50C741949803600F77184 /* NWAsset.m */; };
 /* End PBXBuildFile section */
@@ -111,6 +112,8 @@
 		72E79CC4195557FB00E3C915 /* NWLiabilityDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWLiabilityDetailsViewController.m; sourceTree = "<group>"; };
 		72E79CC6195559E700E3C915 /* NWPortfolioLiabilitiesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWPortfolioLiabilitiesTableViewController.h; sourceTree = "<group>"; };
 		72E79CC7195559E700E3C915 /* NWPortfolioLiabilitiesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWPortfolioLiabilitiesTableViewController.m; sourceTree = "<group>"; };
+		72E79CC919559C5900E3C915 /* NWSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWSettingsViewController.h; sourceTree = "<group>"; };
+		72E79CCA19559C5900E3C915 /* NWSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWSettingsViewController.m; sourceTree = "<group>"; };
 		72F50C6F1949755F00F77184 /* NWAssetDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWAssetDetailsViewController.h; sourceTree = "<group>"; };
 		72F50C701949755F00F77184 /* NWAssetDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWAssetDetailsViewController.m; sourceTree = "<group>"; };
 		72F50C731949803600F77184 /* NWAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWAsset.h; sourceTree = "<group>"; };
@@ -204,6 +207,8 @@
 				7281645F193AA37A00191434 /* ManagePortfolio */,
 				7281645E193AA36200191434 /* Overview */,
 				7281645C193AA21900191434 /* Accounts */,
+				72E79CC919559C5900E3C915 /* NWSettingsViewController.h */,
+				72E79CCA19559C5900E3C915 /* NWSettingsViewController.m */,
 				72116894193026EA0047DC02 /* NWAppDelegate.h */,
 				72116895193026EA0047DC02 /* NWAppDelegate.m */,
 				72116897193026EA0047DC02 /* Main_iPhone.storyboard */,
@@ -415,6 +420,7 @@
 				723C56E41931C6620073AE8E /* NWHelper.m in Sources */,
 				7258580E1930657100379E80 /* NWOverviewPageContentViewController.m in Sources */,
 				72E79CC5195557FB00E3C915 /* NWLiabilityDetailsViewController.m in Sources */,
+				72E79CCB19559C5900E3C915 /* NWSettingsViewController.m in Sources */,
 				721168BF19302BEE0047DC02 /* NWAccountPageContentViewController.m in Sources */,
 				723C56E11931BEF20073AE8E /* NWAccountsTableViewController.m in Sources */,
 				72F50C751949803600F77184 /* NWAsset.m in Sources */,
