@@ -45,6 +45,9 @@
 
 - (void)done:(id)sender
 {
+    if(self.saving) return;
+    self.saving = YES;
+    
     PFObject *liability;
     
     if([[self.nameTextField text] length] == 0) return;

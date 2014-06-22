@@ -46,6 +46,9 @@
 
 - (void)done:(id)sender
 {
+    if(self.saving)return;
+    self.saving = YES;
+    
     PFObject *asset;
     
     if([[self.nameTextField text] length] == 0) return;

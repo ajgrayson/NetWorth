@@ -49,6 +49,9 @@
 
 - (IBAction)invite:(id)sender
 {
+    if(self.inviting)return;
+    self.inviting = YES;
+    
     NSString *email = self.userEmailTextField.text;
     
     PFQuery *query = [PFQuery queryWithClassName:@"_User"];

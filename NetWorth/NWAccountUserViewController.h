@@ -21,6 +21,8 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *inviteUserButton;
 
+@property BOOL inviting;
+
 - (IBAction)invite:(id)sender;
 
 @end

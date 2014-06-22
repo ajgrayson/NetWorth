@@ -31,6 +31,8 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *valueTextField;
 
+@property BOOL saving;
+
 - (IBAction)cancel:(id)sender;
 
 - (IBAction)done:(id)sender;

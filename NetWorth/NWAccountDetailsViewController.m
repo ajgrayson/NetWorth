@@ -104,6 +104,9 @@
 
 - (IBAction)done:(id)sender
 {
+    if(self.saving) return;
+    self.saving = YES;
+    
     PFObject *account;
     PFUser *user = [PFUser currentUser];
     BOOL isNew = YES;

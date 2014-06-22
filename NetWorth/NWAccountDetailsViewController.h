@@ -32,6 +32,8 @@
 
 @property (strong, nonatomic) NSMutableArray *users;
 
+@property BOOL saving;
+
 - (IBAction)cancel:(id)sender;
 
 - (IBAction)done:(id)sender;
