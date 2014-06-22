@@ -10,6 +10,10 @@
 
 @interface NWSettingsViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+
 - (IBAction)logout:(id)sender;
 
 @end

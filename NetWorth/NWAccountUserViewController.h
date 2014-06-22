@@ -17,8 +17,6 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *userEmailTextField;
 
-@property (weak, nonatomic) IBOutlet UILabel *pendingMessageLabel;
-
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *inviteUserButton;
 
 @property BOOL inviting;

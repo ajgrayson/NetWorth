@@ -16,11 +16,14 @@
 
 @implementation NWAccountsTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithStyle:style];
+    self = [super initWithCoder:aDecoder];
     if (self) {
         // Custom initialization
+        UIColor *color = [UIColor colorWithRed:1 green:0.8 blue:0.2 alpha:1];
+        //self.navigationController.navigationBar.barTintColor = color;
+        [[UINavigationBar appearance] setBarTintColor:color];
     }
     return self;
 }

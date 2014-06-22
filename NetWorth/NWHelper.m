@@ -30,11 +30,13 @@
 
 + (NSString *)formatNumberAsMoney:(NSNumber *)val
 {
-    NSMutableString *totalAssetsStr = [[NSMutableString alloc] initWithString:@"$"];
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
+    [numberFormatter setMaximumFractionDigits:0];
     
-    [totalAssetsStr appendString:[val stringValue]];
+    NSString *numberAsString = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[val floatValue]]];
     
-    return totalAssetsStr;
+    return numberAsString;
 }
 
 + (void)getTotalAssetsInAccount:(PFObject *)account forUser:(PFObject *)user withBlock:(void (^) (NSNumber *))onCompleteBlock

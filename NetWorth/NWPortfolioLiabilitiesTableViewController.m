@@ -63,7 +63,13 @@
     PFObject *liability = [self.liabilities objectAtIndex:indexPath.row];
     
     [cell.textLabel setText:[liability objectForKey:@"name"]];
-    [cell.detailTextLabel setText:[liability objectForKey:@"value"]];
+    
+    NSString *val = [liability objectForKey:@"value"];
+    NSNumber *nval = [[NSNumber alloc] initWithFloat:[val floatValue]];
+    NSString *sval = [NWHelper formatNumberAsMoney:nval];
+    
+    [cell.detailTextLabel setText:sval];
+    
     return cell;
 }
 

@@ -37,8 +37,6 @@
         self.userEmailTextField.text = [self.user objectForKey:@"email"];
         self.inviteUserButton.enabled = NO;
     }
-    
-    self.pendingMessageLabel.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning

@@ -22,6 +22,9 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         // Custom initialization
+        UIColor *color = [UIColor colorWithRed:0.259 green:0.247 blue:0.235 alpha:1];
+        [[UITabBar appearance] setTintColor:color];
+        [[UITabBar appearance] setBarTintColor:color];
     }
     return self;
 }
@@ -68,7 +71,13 @@
 
     PFObject *asset = [self.assets objectAtIndex:indexPath.row];
     [cell.textLabel setText:[asset objectForKey:@"name"]];
-    [cell.detailTextLabel setText:[asset objectForKey:@"value"]];
+    
+    NSString *val = [asset objectForKey:@"value"];
+    NSNumber *nval = [[NSNumber alloc] initWithFloat:[val floatValue]];
+    NSString *sval = [NWHelper formatNumberAsMoney:nval];
+    
+    [cell.detailTextLabel setText:sval];
+    
     return cell;
 }
 

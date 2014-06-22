@@ -35,6 +35,7 @@
 {
     [super viewDidAppear:animated];
     self.navItem.rightBarButtonItem.title = @"Edit";
+    self.navItem.rightBarButtonItem.enabled = YES;
     [self loadData];
 }
 
