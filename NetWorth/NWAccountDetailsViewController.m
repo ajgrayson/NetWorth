@@ -7,6 +7,7 @@
 //
 
 #import "NWAccountDetailsViewController.h"
+#import "NWAccountUserViewController.h"
 #import "NWConstants.h"
 
 @interface NWAccountDetailsViewController ()
@@ -15,9 +16,9 @@
 
 @implementation NWAccountDetailsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithCoder:aDecoder];
     if (self) {
         // Custom initialization
     }
@@ -28,13 +29,34 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.users = [[NSMutableArray alloc] initWithCapacity:0];
+    
+    if(self.account != nil) {
+        self.nameTextField.text = [self.account objectForKey:@"name"];
+        [self loadUsers];
+    } else {
+        self.userTableView.hidden = YES;
+        self.inviteUserButton.hidden = YES;
+        self.userTableTitleLabel.hidden = YES;
+    }
 }
 
--(void)viewDidAppear:(BOOL)animated
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if(self.data != nil) {
-        //[cell.textLabel setText:[post objectForKey:@"textContent"]];
-        self.nameTextField.text = [self.data objectForKey:@"name"];
+    if ([segue.identifier isEqualToString:@"AddAccountUser"]) {
+        NWAccountUserViewController *accountUserViewController = segue.destinationViewController;
+        
+        accountUserViewController.account = self.account;
+    } else if ([segue.identifier isEqualToString:@"EditAccountUser"]) {
+        NWAccountUserViewController *accountUserViewController = segue.destinationViewController;
+        
+        NSIndexPath *indexPath = [self.userTableView indexPathForSelectedRow];
+        
+        PFObject *user = [self.users objectAtIndex:indexPath.row];
+        
+        accountUserViewController.account = self.account;
+        accountUserViewController.user = user;
     }
 }
 
@@ -44,6 +66,36 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)loadUsers
+{
+    self.users = [NSMutableArray arrayWithCapacity:0];
+    
+    PFRelation *relation = [self.account relationForKey:@"members"];
+    
+    [[relation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            // There was an error
+        } else {
+            [self.users addObjectsFromArray: objects];
+            [self.userTableView reloadData];
+        }
+    }];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.users count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AccountUserCell" forIndexPath:indexPath];
+    
+    PFObject *user = [self.users objectAtIndex:indexPath.row];
+    [cell.textLabel setText:[user objectForKey:@"username"]];
+    
+    return cell;
+}
 
 - (IBAction)cancel:(id)sender
 {
@@ -53,37 +105,43 @@
 - (IBAction)done:(id)sender
 {
     PFObject *account;
+    PFUser *user = [PFUser currentUser];
+    BOOL isNew = YES;
     
-    if(self.data != nil) {
-        account = self.data;
+    if(self.account != nil) {
+        account = self.account;
+        isNew = NO;
     } else {
         account = [PFObject objectWithClassName:AccountClassName];
         
         // Create relationship
-        [account setObject:[PFUser currentUser] forKey:@"author"];
+        [account setObject:user forKey:@"author"];
+        
+        PFRelation *relation = [account relationForKey:@"members"];
+        [relation addObject:user];
     }
     
     [account setObject:[self.nameTextField text] forKey:@"name"];
     
     // Save the new post
-    //[self showLoading];
     [account saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
-            [self.delegate accountDetailsViewController:self didSaveAccount:account];
+            if(isNew) {
+                //PFRelation *relation2 = [user relationForKey:@"accounts"];
+                //[relation2 addObject:account];
+                
+                [self.delegate accountDetailsViewController:self didSaveAccount:account];
+                
+//                [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//                    [self.delegate accountDetailsViewController:self didSaveAccount:account];
+//                }];
+            } else {
+                [self.delegate accountDetailsViewController:self didSaveAccount:account];
+            }
         }
     }];
+    
+    
 }
-
-//- (void)showLoading
-//{
-//    UIActivityIndicatorView *activityView=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-//    
-//    activityView.center = self.view.center;
-//    
-//    [activityView startAnimating];
-//    
-//    [self.view addSubview:activityView];
-//}
-
 
 @end

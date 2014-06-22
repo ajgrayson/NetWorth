@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-//#import "NWAccount.h"
-
 @class NWAccountDetailsViewController;
 
 @protocol NWAccountDetailsViewControllerDelegate <NSObject>
@@ -18,18 +16,24 @@
 - (void)accountDetailsViewController:(NWAccountDetailsViewController *)controller didSaveAccount:(PFObject *)account;
 @end
 
-@interface NWAccountDetailsViewController : UIViewController
+@interface NWAccountDetailsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UIButton *inviteUserButton;
+
+@property (weak, nonatomic) IBOutlet UITableView *userTableView;
+
+@property (weak, nonatomic) IBOutlet UILabel *userTableTitleLabel;
 
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 
-@property (weak, nonatomic) id <NWAccountDetailsViewControllerDelegate> delegate;
+@property (strong, nonatomic) id <NWAccountDetailsViewControllerDelegate> delegate;
 
-@property (weak, nonatomic) PFObject *data;
+@property (strong, nonatomic) PFObject *account;
+
+@property (strong, nonatomic) NSMutableArray *users;
 
 - (IBAction)cancel:(id)sender;
 
 - (IBAction)done:(id)sender;
-
-- (void)setData:(PFObject *)account;
 
 @end

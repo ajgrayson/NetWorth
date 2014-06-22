@@ -136,14 +136,13 @@
     
     self.accounts = [NSMutableArray arrayWithCapacity:0];
     
-    PFQuery *postQuery = [PFQuery queryWithClassName:AccountClassName];
+    PFObject *user = [PFUser currentUser];
     
-    // Follow relationship
-    [postQuery whereKey:@"author" equalTo:[PFUser currentUser]];
+    PFQuery *query = [PFQuery queryWithClassName:AccountClassName];
+    [query whereKey:@"members" equalTo:user];
     
-    [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            [self.accounts removeAllObjects];           // Store results
             [self.accounts addObjectsFromArray:objects];
             [self.tableView reloadData];   // Reload table
         }
@@ -201,11 +200,7 @@
 {
     if(self.loading)return;
     
-    if(self.tableView.editing == YES) {
-        [self performSegueWithIdentifier:@"EditAccount" sender:indexPath];//IndexPath as sender
-    } else {
-        [self performSegueWithIdentifier:@"OpenAccount" sender:indexPath];//IndexPath as sender
-    }
+    [self performSegueWithIdentifier:@"OpenAccount" sender:indexPath];//IndexPath as sender
 }
 
 // Override to support editing the table view.
@@ -227,7 +222,6 @@
 
 - (void)accountDetailsViewController:(NWAccountDetailsViewController *)controller didSaveAccount:(PFObject *)account
 {
-    
     [[self navigationController] popViewControllerAnimated:YES];
     [self loadAccounts];
 }

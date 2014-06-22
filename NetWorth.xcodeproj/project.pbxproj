@@ -24,6 +24,7 @@
 		721168B2193026EA0047DC02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 721168B0193026EA0047DC02 /* InfoPlist.strings */; };
 		721168B4193026EA0047DC02 /* NetWorthTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 721168B3193026EA0047DC02 /* NetWorthTests.m */; };
 		721168BF19302BEE0047DC02 /* NWAccountPageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 721168BE19302BEE0047DC02 /* NWAccountPageContentViewController.m */; };
+		72133CEB19566E2E002E733F /* NWAccountUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72133CEA19566E2E002E733F /* NWAccountUserViewController.m */; };
 		723C56E11931BEF20073AE8E /* NWAccountsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723C56E01931BEF20073AE8E /* NWAccountsTableViewController.m */; };
 		723C56E41931C6620073AE8E /* NWHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 723C56E31931C6620073AE8E /* NWHelper.m */; };
 		723E412119485220001EE066 /* NWPortfolioAssetsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723E412019485220001EE066 /* NWPortfolioAssetsTableViewController.m */; };
@@ -84,6 +85,8 @@
 		721168B3193026EA0047DC02 /* NetWorthTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetWorthTests.m; sourceTree = "<group>"; };
 		721168BD19302BEE0047DC02 /* NWAccountPageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWAccountPageContentViewController.h; sourceTree = "<group>"; };
 		721168BE19302BEE0047DC02 /* NWAccountPageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWAccountPageContentViewController.m; sourceTree = "<group>"; };
+		72133CE919566E2E002E733F /* NWAccountUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWAccountUserViewController.h; sourceTree = "<group>"; };
+		72133CEA19566E2E002E733F /* NWAccountUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWAccountUserViewController.m; sourceTree = "<group>"; };
 		723C56DF1931BEF20073AE8E /* NWAccountsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NWAccountsTableViewController.h; path = ../NWAccountsTableViewController.h; sourceTree = "<group>"; };
 		723C56E01931BEF20073AE8E /* NWAccountsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NWAccountsTableViewController.m; path = ../NWAccountsTableViewController.m; sourceTree = "<group>"; };
 		723C56E21931C6620073AE8E /* NWHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWHelper.h; sourceTree = "<group>"; };
@@ -250,6 +253,8 @@
 		7281645C193AA21900191434 /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
+				72133CE919566E2E002E733F /* NWAccountUserViewController.h */,
+				72133CEA19566E2E002E733F /* NWAccountUserViewController.m */,
 				7211159B1939196500DB5636 /* NWAccountDetailsViewController.h */,
 				7211159C1939196500DB5636 /* NWAccountDetailsViewController.m */,
 				723C56DF1931BEF20073AE8E /* NWAccountsTableViewController.h */,
@@ -424,6 +429,7 @@
 				721168BF19302BEE0047DC02 /* NWAccountPageContentViewController.m in Sources */,
 				723C56E11931BEF20073AE8E /* NWAccountsTableViewController.m in Sources */,
 				72F50C751949803600F77184 /* NWAsset.m in Sources */,
+				72133CEB19566E2E002E733F /* NWAccountUserViewController.m in Sources */,
 				7211689F193026EA0047DC02 /* NWOverviewViewController.m in Sources */,
 				721115A019391E2D00DB5636 /* NWManagePortfolioTabViewController.m in Sources */,
 				72F50C711949755F00F77184 /* NWAssetDetailsViewController.m in Sources */,

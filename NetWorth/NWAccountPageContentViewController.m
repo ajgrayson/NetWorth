@@ -38,7 +38,17 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.navItem.rightBarButtonItem.title = @"Manage";
+    
+    PFObject *user = [PFUser currentUser];
+    
+    if([self.user.objectId isEqualToString:user.objectId]) {
+        self.navItem.rightBarButtonItem.title = @"Manage";
+        self.navItem.rightBarButtonItem.enabled = YES;
+    } else {
+        self.navItem.rightBarButtonItem.title = @"";
+        self.navItem.rightBarButtonItem.enabled = NO;
+    }
+    
     [self loadData];
 }
 

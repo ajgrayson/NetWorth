@@ -23,13 +23,32 @@
 	
     // Do any additional setup after loading the view, typically from a nib.
     
+    PFRelation *relation = [self.account relationForKey:@"members"];
+    
+    [[relation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            // There was an error
+        } else {
+            self.users = [[NSArray alloc] initWithArray:objects];
+            [self loadPages];
+        }
+    }];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    self.navigationItem.rightBarButtonItem.title = @"Edit";
+}
+
+- (void)loadPages
+{
     UIPageControl *pageControl = [UIPageControl appearance];
     pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
     pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
     pageControl.backgroundColor = [UIColor whiteColor];
     
-    PFObject *u = [self.account objectForKey:@"author"];
-    self.users = [[NSArray alloc] initWithObjects:u, nil];
+    //PFObject *u = [self.account objectForKey:@"author"];
+    //self.users = [[NSArray alloc] init];
     
     // Create page view controller
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
@@ -45,11 +64,6 @@
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
-    self.navigationItem.rightBarButtonItem.title = @"Edit";
 }
 
 - (void)didReceiveMemoryWarning
@@ -138,7 +152,7 @@
         NWAccountDetailsViewController *accountDetailsViewController = segue.destinationViewController;
         
         accountDetailsViewController.delegate = self;
-        accountDetailsViewController.data = self.account;
+        accountDetailsViewController.account = self.account;
     }
 }
 
