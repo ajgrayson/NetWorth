@@ -45,8 +45,8 @@
         self.navItem.rightBarButtonItem.title = @"Manage";
         self.navItem.rightBarButtonItem.enabled = YES;
     } else {
-        self.navItem.rightBarButtonItem.title = @"";
-        self.navItem.rightBarButtonItem.enabled = NO;
+        self.navItem.rightBarButtonItem.title = @"View";
+        self.navItem.rightBarButtonItem.enabled = YES;
     }
     
     [self loadData];

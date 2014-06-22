@@ -78,6 +78,13 @@
     
     [cell.detailTextLabel setText:sval];
     
+    PFObject *user = [asset objectForKey:@"author"];
+    if(![self.user.objectId isEqualToString:user.objectId])
+    {
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.userInteractionEnabled = NO;
+    }
+    
     return cell;
 }
 
@@ -111,7 +118,7 @@
     PFQuery *postQuery = [PFQuery queryWithClassName:ItemClassName];
     
     // Follow relationship
-    [postQuery whereKey:@"author" equalTo:[PFUser currentUser]];
+    [postQuery whereKey:@"author" equalTo:self.user];
     [postQuery whereKey:@"account" equalTo:[self account]];
     [postQuery whereKey:@"type" equalTo:AssetTypeName];
     
@@ -142,6 +149,5 @@
     
     [[self navigationController] popViewControllerAnimated:YES];
 }
-
 
 @end

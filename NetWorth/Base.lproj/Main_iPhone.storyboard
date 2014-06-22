@@ -320,7 +320,7 @@
             </objects>
             <point key="canvasLocation" x="1806" y="2141"/>
         </scene>
-        <!--Portfolio Liabilities Table View Controller-->
+        <!--Portfolio Liabilities Table View Controller - Liabilities-->
         <scene sceneID="1JN-Om-uEQ">
             <objects>
                 <tableViewController id="dKj-Wr-h6q" customClass="NWPortfolioLiabilitiesTableViewController" sceneMemberID="viewController">
@@ -362,7 +362,7 @@
                             <outlet property="delegate" destination="dKj-Wr-h6q" id="kIw-bh-wNW"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="hCZ-8n-THH">
+                    <navigationItem key="navigationItem" title="Liabilities" id="hCZ-8n-THH">
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="6RM-3M-SYi">
                             <connections>
                                 <action selector="done:" destination="dKj-Wr-h6q" id="g00-4C-hnS"/>
@@ -439,7 +439,7 @@
             </objects>
             <point key="canvasLocation" x="3386" y="2558"/>
         </scene>
-        <!--Portfolio Assets Table View Controller-->
+        <!--Portfolio Assets Table View Controller - Assets-->
         <scene sceneID="Z9H-f3-yst">
             <objects>
                 <tableViewController id="H9q-Us-fiT" customClass="NWPortfolioAssetsTableViewController" sceneMemberID="viewController">
@@ -481,7 +481,7 @@
                             <outlet property="delegate" destination="H9q-Us-fiT" id="m1r-dS-vdd"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="e4z-uv-1iI">
+                    <navigationItem key="navigationItem" title="Assets" id="e4z-uv-1iI">
                         <barButtonItem key="backBarButtonItem" title="gg" id="cSl-2h-bGV"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="Tzf-Os-sao">
                             <connections>
@@ -563,7 +563,7 @@
         <scene sceneID="1oY-JU-pcC">
             <objects>
                 <navigationController definesPresentationContext="YES" id="Vsc-hd-JKQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Assets" id="J3V-Df-3zr"/>
+                    <tabBarItem key="tabBarItem" title="Assets" image="AssetIcon" id="J3V-Df-3zr"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aCl-ex-U1p">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -583,7 +583,7 @@
         <scene sceneID="cYy-jU-pCL">
             <objects>
                 <navigationController definesPresentationContext="YES" id="na2-6M-Ff3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Liabilities" id="tCe-Ca-kx0"/>
+                    <tabBarItem key="tabBarItem" title="Liabilities" image="LiabilityIcon" id="tCe-Ca-kx0"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="c0j-lD-Emh">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -746,6 +746,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AssetIcon" width="32" height="32"/>
+        <image name="LiabilityIcon" width="32" height="32"/>
         <image name="SettingsIcon" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
