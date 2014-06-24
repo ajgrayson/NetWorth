@@ -374,6 +374,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addLiabilityButton" destination="7yZ-bP-9WP" id="gff-oA-8VB"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yQc-IT-12f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -494,6 +497,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addAssetButton" destination="0Iz-Qi-EY1" id="LeU-l5-ljq"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xYq-zc-ZUJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

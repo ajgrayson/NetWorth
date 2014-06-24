@@ -21,6 +21,8 @@
 
 @property (nonatomic, strong) UITabBarController<NWTabItemProtocol> *delegate;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addAssetButton;
+
 - (IBAction)done:(id)sender;
 
 @end

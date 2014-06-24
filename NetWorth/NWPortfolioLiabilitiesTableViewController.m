@@ -35,6 +35,11 @@
     self.account = tabView.account;
     self.user = tabView.user;
     
+    if(![[PFUser currentUser].objectId isEqualToString:self.user.objectId])
+    {
+        self.addLiabilityButton.enabled = NO;
+    }
+    
     [self loadLiabilities];
 }
 
@@ -71,10 +76,11 @@
     [cell.detailTextLabel setText:sval];
     
     PFObject *user = [liability objectForKey:@"author"];
-    if(![self.user.objectId isEqualToString:user.objectId])
+    if(![[PFUser currentUser].objectId isEqualToString:user.objectId])
     {
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.userInteractionEnabled = NO;
+        cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
     return cell;

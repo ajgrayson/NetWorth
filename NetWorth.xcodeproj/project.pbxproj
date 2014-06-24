@@ -210,8 +210,6 @@
 				7281645F193AA37A00191434 /* ManagePortfolio */,
 				7281645E193AA36200191434 /* Overview */,
 				7281645C193AA21900191434 /* Accounts */,
-				72E79CC919559C5900E3C915 /* NWSettingsViewController.h */,
-				72E79CCA19559C5900E3C915 /* NWSettingsViewController.m */,
 				72116894193026EA0047DC02 /* NWAppDelegate.h */,
 				72116895193026EA0047DC02 /* NWAppDelegate.m */,
 				72116897193026EA0047DC02 /* Main_iPhone.storyboard */,
@@ -253,6 +251,8 @@
 		7281645C193AA21900191434 /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
+				72E79CC919559C5900E3C915 /* NWSettingsViewController.h */,
+				72E79CCA19559C5900E3C915 /* NWSettingsViewController.m */,
 				72133CE919566E2E002E733F /* NWAccountUserViewController.h */,
 				72133CEA19566E2E002E733F /* NWAccountUserViewController.m */,
 				7211159B1939196500DB5636 /* NWAccountDetailsViewController.h */,
