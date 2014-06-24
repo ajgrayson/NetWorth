@@ -10,6 +10,8 @@
 #import "NWManagePortfolioTabViewController.h"
 #import "NWHelper.h"
 #import "NWConstants.h"
+#import "NWItemTableViewCell.h"
+#import "NWCategory.h"
 
 @interface NWPortfolioAssetsTableViewController ()
 
@@ -25,6 +27,8 @@
         UIColor *color = [UIColor colorWithRed:0.259 green:0.247 blue:0.235 alpha:1];
         [[UITabBar appearance] setTintColor:color];
         [[UITabBar appearance] setBarTintColor:color];
+        
+        self.categories = [NWHelper getAssetCategories];
     }
     return self;
 }
@@ -32,12 +36,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     UINavigationController *nc = (UINavigationController *)[self parentViewController];
     NWManagePortfolioTabViewController *tabView = (NWManagePortfolioTabViewController *)[nc parentViewController];
@@ -72,16 +70,24 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AssetCell" forIndexPath:indexPath];
+    NWItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AssetCell" forIndexPath:indexPath];
 
     PFObject *asset = [self.assets objectAtIndex:indexPath.row];
-    [cell.textLabel setText:[asset objectForKey:@"name"]];
+    [cell.titleLabel setText:[asset objectForKey:@"name"]];
     
     NSString *val = [asset objectForKey:@"value"];
     NSNumber *nval = [[NSNumber alloc] initWithFloat:[val floatValue]];
     NSString *sval = [NWHelper formatNumberAsMoney:nval];
     
-    [cell.detailTextLabel setText:sval];
+    [cell.valueLabel setText:sval];
+    
+    int catId = 0;
+    if([asset objectForKey:@"category"] != nil) {
+        catId = [[asset objectForKey:@"category"] intValue];
+    }
+    
+    NWCategory *cat = [self.categories objectAtIndex:catId];
+    [cell.categoryLabel setText:cat.name];
     
     PFObject *user = [asset objectForKey:@"author"];
     if(![[PFUser currentUser].objectId isEqualToString:user.objectId])

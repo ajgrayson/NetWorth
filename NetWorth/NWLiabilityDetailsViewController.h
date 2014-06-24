@@ -17,9 +17,11 @@
 - (void)liabilityDetailsViewController:(NWLiabilityDetailsViewController *)controller didSaveLiability:(PFObject *)liability;
 @end
 
-@interface NWLiabilityDetailsViewController : UIViewController
+@interface NWLiabilityDetailsViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (weak, nonatomic) id<NWLiabilityDetailsViewControllerDelegate> delegate;
+
+@property (strong, nonatomic) NSArray *categories;
 
 @property (weak, nonatomic) PFObject *user;
 
@@ -30,6 +32,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 
 @property (weak, nonatomic) IBOutlet UITextField *valueTextField;
+
+@property (weak, nonatomic) IBOutlet UIPickerView *categoryPicker;
 
 @property BOOL saving;
 

@@ -15,6 +15,8 @@
 
 @property (nonatomic, strong) NSMutableArray *liabilities;
 
+@property (nonatomic, strong) NSArray *categories;
+
 @property (nonatomic, strong) PFObject *user;
 
 @property (nonatomic, strong) PFObject *account;

@@ -10,6 +10,8 @@
 #import "NWManagePortfolioTabViewController.h"
 #import "NWHelper.h"
 #import "NWConstants.h"
+#import "NWItemTableViewCell.h"
+#import "NWCategory.h"
 
 @interface NWPortfolioLiabilitiesTableViewController ()
 
@@ -17,11 +19,12 @@
 
 @implementation NWPortfolioLiabilitiesTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithStyle:style];
+    self = [super initWithCoder:aDecoder];
     if (self) {
         // Custom initialization
+        self.categories = [NWHelper getLiabilityCategories];
     }
     return self;
 }
@@ -63,17 +66,25 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LiabilityCell" forIndexPath:indexPath];
+    NWItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LiabilityCell" forIndexPath:indexPath];
     
     PFObject *liability = [self.liabilities objectAtIndex:indexPath.row];
     
-    [cell.textLabel setText:[liability objectForKey:@"name"]];
+    [cell.titleLabel setText:[liability objectForKey:@"name"]];
     
     NSString *val = [liability objectForKey:@"value"];
     NSNumber *nval = [[NSNumber alloc] initWithFloat:[val floatValue]];
     NSString *sval = [NWHelper formatNumberAsMoney:nval];
     
-    [cell.detailTextLabel setText:sval];
+    [cell.valueLabel setText:sval];
+    
+    int catId = 0;
+    if([liability objectForKey:@"category"] != nil) {
+        catId = [[liability objectForKey:@"category"] intValue];
+    }
+    
+    NWCategory *cat = [self.categories objectAtIndex:catId];
+    [cell.categoryLabel setText:cat.name];
     
     PFObject *user = [liability objectForKey:@"author"];
     if(![[PFUser currentUser].objectId isEqualToString:user.objectId])

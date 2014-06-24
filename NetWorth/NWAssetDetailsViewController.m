@@ -8,6 +8,8 @@
 
 #import "NWAssetDetailsViewController.h"
 #import "NWConstants.h"
+#import "NWCategory.h"
+#import "NWHelper.h"
 
 @interface NWAssetDetailsViewController ()
 
@@ -15,11 +17,12 @@
 
 @implementation NWAssetDetailsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithCoder:aDecoder];
     if (self) {
         // Custom initialization
+        self.categories = [NWHelper getAssetCategories];
     }
     return self;
 }
@@ -35,6 +38,12 @@
     if(self.asset != nil) {
         self.nameTextField.text = [self.asset objectForKey:@"name"];
         self.valueTextField.text = [self.asset objectForKey:@"value"];
+        
+        int cat = 0;
+        if([self.asset objectForKey:@"category"] != nil) {
+            cat = [[self.asset objectForKey:@"category"] intValue];
+        }
+        [self.categoryPicker selectRow:cat inComponent:0 animated:YES];
     }
 }
 
@@ -42,6 +51,23 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [self.categories count];
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    NWCategory *cat = (NWCategory *) [self.categories objectAtIndex:row];
+    
+    return cat.name;
 }
 
 - (void)done:(id)sender
@@ -65,8 +91,12 @@
         [asset setObject:AssetTypeName forKey:@"type"];
     }
     
+    int row = [self.categoryPicker selectedRowInComponent:0];
+    NWCategory *cat = (NWCategory *)self.categories[row];
+    
     [asset setObject:[self.nameTextField text] forKey:@"name"];
     [asset setObject:[self.valueTextField text] forKey:@"value"];
+    [asset setObject:cat.id forKey:@"category"];
     
     // Save the new post
     [asset saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

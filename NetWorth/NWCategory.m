@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Johnathan Grayson. All rights reserved.
 //
 
-#import "NWAsset.h"
+#import "NWCategory.h"
 
-@implementation NWAsset
+@implementation NWCategory
 
 @end

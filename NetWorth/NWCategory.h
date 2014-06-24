@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NWAsset : NSObject
+@interface NWCategory : NSObject
 
 @property (nonatomic, copy) NSNumber *id;
 

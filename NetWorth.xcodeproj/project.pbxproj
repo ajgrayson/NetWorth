@@ -29,6 +29,7 @@
 		723C56E41931C6620073AE8E /* NWHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 723C56E31931C6620073AE8E /* NWHelper.m */; };
 		723E412119485220001EE066 /* NWPortfolioAssetsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723E412019485220001EE066 /* NWPortfolioAssetsTableViewController.m */; };
 		7258580E1930657100379E80 /* NWOverviewPageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7258580D1930657100379E80 /* NWOverviewPageContentViewController.m */; };
+		72972861195967D800AE8E31 /* NWItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72972860195967D800AE8E31 /* NWItemTableViewCell.m */; };
 		72E79CA81954FB7400E3C915 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E79CA71954FB7400E3C915 /* Parse.framework */; };
 		72E79CAA1954FBBB00E3C915 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E79CA91954FBBB00E3C915 /* AudioToolbox.framework */; };
 		72E79CAC1954FBC600E3C915 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E79CAB1954FBC600E3C915 /* CFNetwork.framework */; };
@@ -46,7 +47,7 @@
 		72E79CC8195559E700E3C915 /* NWPortfolioLiabilitiesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72E79CC7195559E700E3C915 /* NWPortfolioLiabilitiesTableViewController.m */; };
 		72E79CCB19559C5900E3C915 /* NWSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72E79CCA19559C5900E3C915 /* NWSettingsViewController.m */; };
 		72F50C711949755F00F77184 /* NWAssetDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F50C701949755F00F77184 /* NWAssetDetailsViewController.m */; };
-		72F50C751949803600F77184 /* NWAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F50C741949803600F77184 /* NWAsset.m */; };
+		72F50C751949803600F77184 /* NWCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F50C741949803600F77184 /* NWCategory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,8 @@
 		7258580D1930657100379E80 /* NWOverviewPageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWOverviewPageContentViewController.m; sourceTree = "<group>"; };
 		7258580F1930767F00379E80 /* NWPageContentViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWPageContentViewProtocol.h; sourceTree = "<group>"; };
 		7291DB37194B4896000987F9 /* NWTabItemProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWTabItemProtocol.h; sourceTree = "<group>"; };
+		7297285F195967D800AE8E31 /* NWItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWItemTableViewCell.h; sourceTree = "<group>"; };
+		72972860195967D800AE8E31 /* NWItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWItemTableViewCell.m; sourceTree = "<group>"; };
 		72E79CA71954FB7400E3C915 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		72E79CA91954FBBB00E3C915 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		72E79CAB1954FBC600E3C915 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -119,8 +122,8 @@
 		72E79CCA19559C5900E3C915 /* NWSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWSettingsViewController.m; sourceTree = "<group>"; };
 		72F50C6F1949755F00F77184 /* NWAssetDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWAssetDetailsViewController.h; sourceTree = "<group>"; };
 		72F50C701949755F00F77184 /* NWAssetDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWAssetDetailsViewController.m; sourceTree = "<group>"; };
-		72F50C731949803600F77184 /* NWAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWAsset.h; sourceTree = "<group>"; };
-		72F50C741949803600F77184 /* NWAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWAsset.m; sourceTree = "<group>"; };
+		72F50C731949803600F77184 /* NWCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWCategory.h; sourceTree = "<group>"; };
+		72F50C741949803600F77184 /* NWCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWCategory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,8 +271,8 @@
 			children = (
 				723C56E21931C6620073AE8E /* NWHelper.h */,
 				723C56E31931C6620073AE8E /* NWHelper.m */,
-				72F50C731949803600F77184 /* NWAsset.h */,
-				72F50C741949803600F77184 /* NWAsset.m */,
+				72F50C731949803600F77184 /* NWCategory.h */,
+				72F50C741949803600F77184 /* NWCategory.m */,
 				72E79CC119554D8900E3C915 /* NWConstants.h */,
 			);
 			name = Common;
@@ -288,6 +291,7 @@
 		7281645F193AA37A00191434 /* ManagePortfolio */ = {
 			isa = PBXGroup;
 			children = (
+				7297285E195967BB00AE8E31 /* TableCells */,
 				72F50C72194975B100F77184 /* Details */,
 				7291DB37194B4896000987F9 /* NWTabItemProtocol.h */,
 				7211159E19391E2D00DB5636 /* NWManagePortfolioTabViewController.h */,
@@ -310,6 +314,15 @@
 				7258580D1930657100379E80 /* NWOverviewPageContentViewController.m */,
 			);
 			name = Pages;
+			sourceTree = "<group>";
+		};
+		7297285E195967BB00AE8E31 /* TableCells */ = {
+			isa = PBXGroup;
+			children = (
+				7297285F195967D800AE8E31 /* NWItemTableViewCell.h */,
+				72972860195967D800AE8E31 /* NWItemTableViewCell.m */,
+			);
+			name = TableCells;
 			sourceTree = "<group>";
 		};
 		72F50C72194975B100F77184 /* Details */ = {
@@ -431,8 +444,9 @@
 				72E79CCB19559C5900E3C915 /* NWSettingsViewController.m in Sources */,
 				721168BF19302BEE0047DC02 /* NWAccountPageContentViewController.m in Sources */,
 				723C56E11931BEF20073AE8E /* NWAccountsTableViewController.m in Sources */,
-				72F50C751949803600F77184 /* NWAsset.m in Sources */,
+				72F50C751949803600F77184 /* NWCategory.m in Sources */,
 				72133CEB19566E2E002E733F /* NWAccountUserViewController.m in Sources */,
+				72972861195967D800AE8E31 /* NWItemTableViewCell.m in Sources */,
 				7211689F193026EA0047DC02 /* NWOverviewViewController.m in Sources */,
 				721115A019391E2D00DB5636 /* NWManagePortfolioTabViewController.m in Sources */,
 				72F50C711949755F00F77184 /* NWAssetDetailsViewController.m in Sources */,

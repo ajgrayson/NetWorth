@@ -16,15 +16,19 @@
 - (void)assetDetailsViewController:(NWAssetDetailsViewController *)controller didSaveAsset:(PFObject *)asset;
 @end
 
-@interface NWAssetDetailsViewController : UIViewController
+@interface NWAssetDetailsViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (weak, nonatomic) id<NWAssetDetailsViewControllerDelegate> delegate;
+
+@property (strong, nonatomic) NSArray *categories;
 
 @property (weak, nonatomic) PFObject *user;
 
 @property (weak, nonatomic) PFObject *account;
 
 @property (weak, nonatomic) PFObject *asset;
+
+@property (weak, nonatomic) IBOutlet UIPickerView *categoryPicker;
 
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 

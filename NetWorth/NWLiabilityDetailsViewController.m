@@ -7,6 +7,8 @@
 //
 
 #import "NWLiabilityDetailsViewController.h"
+#import "NWCategory.h"
+#import "NWHelper.h"
 
 @interface NWLiabilityDetailsViewController ()
 
@@ -14,11 +16,12 @@
 
 @implementation NWLiabilityDetailsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithCoder:aDecoder];
     if (self) {
         // Custom initialization
+        self.categories = [NWHelper getLiabilityCategories];
     }
     return self;
 }
@@ -34,6 +37,12 @@
     if(self.liability != nil) {
         self.nameTextField.text = [self.liability objectForKey:@"name"];
         self.valueTextField.text = [self.liability objectForKey:@"value"];
+        
+        int cat = 0;
+        if([self.liability objectForKey:@"category"] != nil) {
+            cat = [[self.liability objectForKey:@"category"] intValue];
+        }
+        [self.categoryPicker selectRow:cat inComponent:0 animated:YES];
     }
 }
 
@@ -41,6 +50,23 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [self.categories count];
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    NWCategory *cat = (NWCategory *) [self.categories objectAtIndex:row];
+    
+    return cat.name;
 }
 
 - (void)done:(id)sender
@@ -64,8 +90,12 @@
         [liability setObject:LiabilityTypeName forKey:@"type"];
     }
     
+    int row = [self.categoryPicker selectedRowInComponent:0];
+    NWCategory *cat = (NWCategory *)self.categories[row];
+    
     [liability setObject:[self.nameTextField text] forKey:@"name"];
     [liability setObject:[self.valueTextField text] forKey:@"value"];
+    [liability setObject:cat.id forKey:@"category"];
     
     // Save the new post
     [liability saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

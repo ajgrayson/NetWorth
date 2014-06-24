@@ -24,4 +24,8 @@
 
 + (void)getTotalsForInAccount:(PFObject *)account withBlock:(void (^) (NSNumber *, NSNumber *))onCompleteBlock;
 
++ (NSArray *)getAssetCategories;
+
++ (NSArray *)getLiabilityCategories;
+
 @end
