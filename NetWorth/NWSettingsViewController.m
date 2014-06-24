@@ -46,5 +46,6 @@
 - (IBAction)logout:(id)sender
 {
     [PFUser logOut];
+    [self.delegate settingsViewControllerDidLogout:self];
 }
 @end

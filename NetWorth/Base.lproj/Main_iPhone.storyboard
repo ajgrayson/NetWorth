@@ -258,7 +258,7 @@
                     <navigationItem key="navigationItem" title="Accounts" id="KOb-Ds-cX7">
                         <barButtonItem key="leftBarButtonItem" image="SettingsIcon" id="7IQ-VU-XSv">
                             <connections>
-                                <segue destination="FnP-jY-y5A" kind="push" id="SPt-7R-FiB"/>
+                                <segue destination="FnP-jY-y5A" kind="push" identifier="OpenSettings" id="SPt-7R-FiB"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="8Gh-7K-sRA">

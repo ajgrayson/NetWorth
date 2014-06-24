@@ -9,6 +9,7 @@
 #import "NWAccountsTableViewController.h"
 #import "NWOverviewViewController.h"
 #import "NWConstants.h"
+#import "NWSettingsViewController.h"
 
 @interface NWAccountsTableViewController ()
 
@@ -196,6 +197,10 @@
         NWOverviewViewController *viewController = segue.destinationViewController;
         viewController.account = account;
         viewController.navItem = self.navigationItem;
+    } else if ([segue.identifier isEqualToString:@"OpenSettings"]) {
+        NWSettingsViewController *settingsViewController = segue.destinationViewController;
+        
+        settingsViewController.delegate = self;
     }
 }
 
@@ -229,5 +234,9 @@
     [self loadAccounts];
 }
 
+- (void)settingsViewControllerDidLogout:(NWSettingsViewController *)controller
+{
+    [[self navigationController] popViewControllerAnimated:YES];
+}
 
 @end
