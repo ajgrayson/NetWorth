@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Parse/Parse.h>
 #import "NWConstants.h"
 
 @interface NWHelper : NSObject
@@ -16,13 +15,13 @@
 
 + (NSString *)formatNumberAsMoney:(NSNumber *)val;
 
-+ (void)getTotalAssetsInAccount:(PFObject *)account forUser:(PFObject *)user withBlock:(void (^) (NSNumber *))onCompleteBlock;
-
-+ (void)getTotalLiabilitiesInAccount:(PFObject *)account forUser:(PFObject *)user withBlock:(void (^) (NSNumber *))onCompleteBlock;
-
-+ (void)getTotalsForInAccount:(PFObject *)account forUser:(PFObject *)user withBlock:(void (^) (NSNumber *, NSNumber *))onCompleteBlock;
-
-+ (void)getTotalsForInAccount:(PFObject *)account withBlock:(void (^) (NSNumber *, NSNumber *))onCompleteBlock;
+//+ (void)getTotalAssetsInAccount:(PFObject *)account forUser:(PFObject *)user withBlock:(void (^) (NSNumber *))onCompleteBlock;
+//
+//+ (void)getTotalLiabilitiesInAccount:(PFObject *)account forUser:(PFObject *)user withBlock:(void (^) (NSNumber *))onCompleteBlock;
+//
+//+ (void)getTotalsForInAccount:(PFObject *)account forUser:(PFObject *)user withBlock:(void (^) (NSNumber *, NSNumber *))onCompleteBlock;
+//
+//+ (void)getTotalsForInAccount:(PFObject *)account withBlock:(void (^) (NSNumber *, NSNumber *))onCompleteBlock;
 
 + (NSArray *)getAssetCategories;
 

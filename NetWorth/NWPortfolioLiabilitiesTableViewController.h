@@ -9,17 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "NWLiabilityDetailsViewController.h"
 #import "NWTabItemProtocol.h"
-#import <Parse/Parse.h>
+//#import <Parse/Parse.h>
 
 @interface NWPortfolioLiabilitiesTableViewController : UITableViewController<NWLiabilityDetailsViewControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *liabilities;
 
 @property (nonatomic, strong) NSArray *categories;
-
-@property (nonatomic, strong) PFObject *user;
-
-@property (nonatomic, strong) PFObject *account;
+//
+//@property (nonatomic, strong) PFObject *user;
+//
+//@property (nonatomic, strong) PFObject *account;
 
 @property (nonatomic, strong) UITabBarController<NWTabItemProtocol> *delegate;
 

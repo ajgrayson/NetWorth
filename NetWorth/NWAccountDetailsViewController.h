@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Parse/Parse.h>
+//#import <Parse/Parse.h>
 
 @class NWAccountDetailsViewController;
 
 @protocol NWAccountDetailsViewControllerDelegate <NSObject>
 - (void)accountDetailsViewControllerDidCancel:(NWAccountDetailsViewController *)controller;
-- (void)accountDetailsViewController:(NWAccountDetailsViewController *)controller didSaveAccount:(PFObject *)account;
+//- (void)accountDetailsViewController:(NWAccountDetailsViewController *)controller didSaveAccount:(PFObject *)account;
 @end
 
 @interface NWAccountDetailsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
@@ -28,7 +28,7 @@
 
 @property (strong, nonatomic) id <NWAccountDetailsViewControllerDelegate> delegate;
 
-@property (strong, nonatomic) PFObject *account;
+//@property (strong, nonatomic) PFObject *account;
 
 @property (strong, nonatomic) NSMutableArray *users;
 

@@ -23,16 +23,16 @@
 	
     // Do any additional setup after loading the view, typically from a nib.
     
-    PFRelation *relation = [self.account relationForKey:@"members"];
+//    PFRelation *relation = [self.account relationForKey:@"members"];
     
-    [[relation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (error) {
-            // There was an error
-        } else {
-            self.users = [[NSArray alloc] initWithArray:objects];
-            [self loadPages];
-        }
-    }];
+//    [[relation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (error) {
+//            // There was an error
+//        } else {
+//            self.users = [[NSArray alloc] initWithArray:objects];
+//            [self loadPages];
+//        }
+//    }];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -82,19 +82,19 @@
         // Home page
         NWOverviewPageContentViewController *pageContentViewController1 = [self.storyboard instantiateViewControllerWithIdentifier:@"HomePageContentViewController"];
         
-        pageContentViewController1.pageIndex = index;
-        pageContentViewController1.account = self.account;
-        pageContentViewController1.navItem = self.navigationItem;
+//        pageContentViewController1.pageIndex = index;
+//        pageContentViewController1.account = self.account;
+//        pageContentViewController1.navItem = self.navigationItem;
         
         return pageContentViewController1;
     } else  {
         // Create a new view controller and pass suitable data.
         NWAccountPageContentViewController *pageContentViewController2 = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
         
-        pageContentViewController2.pageIndex = index;
-        pageContentViewController2.account = self.account;
-        pageContentViewController2.user = [self.users objectAtIndex:index-1];
-        pageContentViewController2.navItem = self.navigationItem;
+//        pageContentViewController2.pageIndex = index;
+//        pageContentViewController2.account = self.account;
+//        pageContentViewController2.user = [self.users objectAtIndex:index-1];
+//        pageContentViewController2.navItem = self.navigationItem;
         
         return pageContentViewController2;
     }
@@ -145,14 +145,14 @@
     if([segue.identifier isEqualToString:@"ManagePortfolio"]) {
         NWManagePortfolioTabViewController *destinationViewController = segue.destinationViewController;
         
-        destinationViewController.delegate2 = self;
-        destinationViewController.user = [self.users objectAtIndex:vc.pageIndex - 1];
-        destinationViewController.account = self.account;
+//        destinationViewController.delegate2 = self;
+//        destinationViewController.user = [self.users objectAtIndex:vc.pageIndex - 1];
+//        destinationViewController.account = self.account;
     } else if ([segue.identifier isEqualToString:@"EditAccount"]) {
         NWAccountDetailsViewController *accountDetailsViewController = segue.destinationViewController;
         
         accountDetailsViewController.delegate = self;
-        accountDetailsViewController.account = self.account;
+//        accountDetailsViewController.account = self.account;
     }
 }
 

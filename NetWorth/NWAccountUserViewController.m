@@ -31,12 +31,12 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    if(self.user != nil)
-    {
-        self.userEmailTextField.enabled = NO;
-        self.userEmailTextField.text = [self.user objectForKey:@"email"];
-        self.inviteUserButton.enabled = NO;
-    }
+//    if(self.user != nil)
+//    {
+//        self.userEmailTextField.enabled = NO;
+//        self.userEmailTextField.text = [self.user objectForKey:@"email"];
+//        self.inviteUserButton.enabled = NO;
+//    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,22 +52,22 @@
     
     NSString *email = self.userEmailTextField.text;
     
-    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-    [query whereKey:@"email" equalTo:email];
-    
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            // Do something with the found objects
-            PFObject *user = [objects objectAtIndex:0];
-            
-            PFRelation *relation = [self.account relationForKey:@"members"];
-            [relation addObject:user];
-            [self.account saveInBackground];
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
+//    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+//    [query whereKey:@"email" equalTo:email];
+//    
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (!error) {
+//            // Do something with the found objects
+//            PFObject *user = [objects objectAtIndex:0];
+//            
+//            PFRelation *relation = [self.account relationForKey:@"members"];
+//            [relation addObject:user];
+//            [self.account saveInBackground];
+//        } else {
+//            // Log details of the failure
+//            NSLog(@"Error: %@ %@", error, [error userInfo]);
+//        }
+//    }];
 }
 
 @end

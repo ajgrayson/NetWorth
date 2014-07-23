@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Parse/Parse.h>
+//#import <Parse/Parse.h>
 #import "NWConstants.h"
 
 @class NWLiabilityDetailsViewController;
 
 @protocol NWLiabilityDetailsViewControllerDelegate <NSObject>
 - (void)liabilityDetailsViewControllerDidCancel:(NWLiabilityDetailsViewController *)controller;
-- (void)liabilityDetailsViewController:(NWLiabilityDetailsViewController *)controller didSaveLiability:(PFObject *)liability;
+//- (void)liabilityDetailsViewController:(NWLiabilityDetailsViewController *)controller didSaveLiability:(PFObject *)liability;
 @end
 
 @interface NWLiabilityDetailsViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
@@ -23,11 +23,11 @@
 
 @property (strong, nonatomic) NSArray *categories;
 
-@property (weak, nonatomic) PFObject *user;
-
-@property (weak, nonatomic) PFObject *account;
-
-@property (weak, nonatomic) PFObject *liability;
+//@property (weak, nonatomic) PFObject *user;
+//
+//@property (weak, nonatomic) PFObject *account;
+//
+//@property (weak, nonatomic) PFObject *liability;
 
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 

@@ -34,16 +34,16 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    if(self.liability != nil) {
-        self.nameTextField.text = [self.liability objectForKey:@"name"];
-        self.valueTextField.text = [self.liability objectForKey:@"value"];
-        
-        int cat = 0;
-        if([self.liability objectForKey:@"category"] != nil) {
-            cat = [[self.liability objectForKey:@"category"] intValue];
-        }
-        [self.categoryPicker selectRow:cat inComponent:0 animated:YES];
-    }
+//    if(self.liability != nil) {
+//        self.nameTextField.text = [self.liability objectForKey:@"name"];
+//        self.valueTextField.text = [self.liability objectForKey:@"value"];
+//        
+//        int cat = 0;
+//        if([self.liability objectForKey:@"category"] != nil) {
+//            cat = [[self.liability objectForKey:@"category"] intValue];
+//        }
+//        [self.categoryPicker selectRow:cat inComponent:0 animated:YES];
+//    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,38 +71,38 @@
 
 - (void)done:(id)sender
 {
-    if(self.saving) return;
-    self.saving = YES;
-    
-    PFObject *liability;
-    
-    if([[self.nameTextField text] length] == 0) return;
-    if([[self.valueTextField text] length] == 0) return;
-    
-    if(self.liability != nil) {
-        liability = self.liability;
-    } else {
-        liability = [PFObject objectWithClassName:ItemClassName];
-        
-        // Create relationship
-        [liability setObject:[self user] forKey:@"author"];
-        [liability setObject:[self account] forKey:@"account"];
-        [liability setObject:LiabilityTypeName forKey:@"type"];
-    }
-    
-    int row = [self.categoryPicker selectedRowInComponent:0];
-    NWCategory *cat = (NWCategory *)self.categories[row];
-    
-    [liability setObject:[self.nameTextField text] forKey:@"name"];
-    [liability setObject:[self.valueTextField text] forKey:@"value"];
-    [liability setObject:cat.id forKey:@"category"];
-    
-    // Save the new post
-    [liability saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-            [self.delegate liabilityDetailsViewController:self didSaveLiability:liability];
-        }
-    }];
+//    if(self.saving) return;
+//    self.saving = YES;
+//    
+//    PFObject *liability;
+//    
+//    if([[self.nameTextField text] length] == 0) return;
+//    if([[self.valueTextField text] length] == 0) return;
+//    
+//    if(self.liability != nil) {
+//        liability = self.liability;
+//    } else {
+//        liability = [PFObject objectWithClassName:ItemClassName];
+//        
+//        // Create relationship
+//        [liability setObject:[self user] forKey:@"author"];
+//        [liability setObject:[self account] forKey:@"account"];
+//        [liability setObject:LiabilityTypeName forKey:@"type"];
+//    }
+//    
+//    int row = [self.categoryPicker selectedRowInComponent:0];
+//    NWCategory *cat = (NWCategory *)self.categories[row];
+//    
+//    [liability setObject:[self.nameTextField text] forKey:@"name"];
+//    [liability setObject:[self.valueTextField text] forKey:@"value"];
+//    [liability setObject:cat.id forKey:@"category"];
+//    
+//    // Save the new post
+//    [liability saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//        if (!error) {
+//            [self.delegate liabilityDetailsViewController:self didSaveLiability:liability];
+//        }
+//    }];
 }
 
 - (void)cancel:(id)sender

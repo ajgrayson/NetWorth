@@ -9,7 +9,7 @@
 #import "NWAppDelegate.h"
 #import "NWAccountsTableViewController.h"
 #import "NWHelper.h"
-#import <Parse/Parse.h>
+//#import <Parse/Parse.h>
 
 @implementation NWAppDelegate
 
@@ -17,10 +17,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [Parse setApplicationId:@"hX7CIZQ8aqJwdxEckyC2BLqoQ43tZBPTdG7A6OXl"
-                  clientKey:@"eypK16SssvfI6JfZDAd4kQKlzHTFYzciKbg1b7fI"];
-    
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+//    [Parse setApplicationId:@"hX7CIZQ8aqJwdxEckyC2BLqoQ43tZBPTdG7A6OXl"
+//                  clientKey:@"eypK16SssvfI6JfZDAd4kQKlzHTFYzciKbg1b7fI"];
+//    
+//    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     return YES;
 }

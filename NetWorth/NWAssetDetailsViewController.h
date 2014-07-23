@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Parse/Parse.h>
+//#import <Parse/Parse.h>
 
 @class NWAssetDetailsViewController;
 
 @protocol NWAssetDetailsViewControllerDelegate <NSObject>
 - (void)assetDetailsViewControllerDidCancel:(NWAssetDetailsViewController *)controller;
-- (void)assetDetailsViewController:(NWAssetDetailsViewController *)controller didSaveAsset:(PFObject *)asset;
+//- (void)assetDetailsViewController:(NWAssetDetailsViewController *)controller didSaveAsset:(PFObject *)asset;
 @end
 
 @interface NWAssetDetailsViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
@@ -21,12 +21,12 @@
 @property (weak, nonatomic) id<NWAssetDetailsViewControllerDelegate> delegate;
 
 @property (strong, nonatomic) NSArray *categories;
-
-@property (weak, nonatomic) PFObject *user;
-
-@property (weak, nonatomic) PFObject *account;
-
-@property (weak, nonatomic) PFObject *asset;
+//
+//@property (weak, nonatomic) PFObject *user;
+//
+//@property (weak, nonatomic) PFObject *account;
+//
+//@property (weak, nonatomic) PFObject *asset;
 
 @property (weak, nonatomic) IBOutlet UIPickerView *categoryPicker;
 

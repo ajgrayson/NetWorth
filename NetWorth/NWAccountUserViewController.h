@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Parse/Parse.h>
+//#import <Parse/Parse.h>
 
 @interface NWAccountUserViewController : UIViewController
 
-@property (strong, nonatomic) PFObject *account;
-
-@property (strong, nonatomic) PFObject *user;
+//@property (strong, nonatomic) PFObject *account;
+//
+//@property (strong, nonatomic) PFObject *user;
 
 @property (weak, nonatomic) IBOutlet UITextField *userEmailTextField;
 

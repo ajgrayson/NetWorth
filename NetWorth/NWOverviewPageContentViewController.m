@@ -48,13 +48,13 @@
 {
     [self.titleLabel setText:[[self.account objectForKey:@"name"] uppercaseString]];
     
-    [NWHelper getTotalsForInAccount:self.account withBlock:^(NSNumber *totalAssets, NSNumber *totalLiabilities) {
-        NSNumber *netWorth = [[NSNumber alloc] initWithFloat:([totalAssets floatValue]  - [totalLiabilities floatValue])];
-        
-        [self.netWorthTotalLabel setText:[NWHelper formatNumberAsMoney:netWorth]];
-        [self.assetTotalsLabel setText: [NWHelper formatNumberAsMoney:totalAssets]];
-        [self.liabilitiesTotalLabel setText: [NWHelper formatNumberAsMoney:totalLiabilities]];
-    }];
+//    [NWHelper getTotalsForInAccount:self.account withBlock:^(NSNumber *totalAssets, NSNumber *totalLiabilities) {
+//        NSNumber *netWorth = [[NSNumber alloc] initWithFloat:([totalAssets floatValue]  - [totalLiabilities floatValue])];
+//        
+//        [self.netWorthTotalLabel setText:[NWHelper formatNumberAsMoney:netWorth]];
+//        [self.assetTotalsLabel setText: [NWHelper formatNumberAsMoney:totalAssets]];
+//        [self.liabilitiesTotalLabel setText: [NWHelper formatNumberAsMoney:totalLiabilities]];
+//    }];
 }
 
 @end

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NWHelper.h"
 #import "NWManagePortfolioTabViewController.h"
-#import <Parse/Parse.h>
+//#import <Parse/Parse.h>
 #import "NWAccountDetailsViewController.h"
 
 @interface NWOverviewViewController : UIViewController  <UIPageViewControllerDataSource, NWManagePortfolioTabViewControllerDelegate, NWAccountDetailsViewControllerDelegate>
@@ -20,7 +20,7 @@
 
 @property (strong, nonatomic) NSArray *users;
 
-@property (strong, nonatomic) PFObject *account;
+//@property (strong, nonatomic) PFObject *account;
 
 @property (strong, nonatomic) UINavigationItem *navItem;
 

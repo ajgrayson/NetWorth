@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "NWTabItemProtocol.h"
-#import <Parse/Parse.h>
+//#import <Parse/Parse.h>
 
 @class NWManagePortfolioTabViewController;
 
@@ -18,9 +18,9 @@
 
 @interface NWManagePortfolioTabViewController : UITabBarController<NWTabItemProtocol>
 
-@property (strong, nonatomic) PFObject *account;
-
-@property (strong, nonatomic) PFObject *user;
+//@property (strong, nonatomic) PFObject *account;
+//
+//@property (strong, nonatomic) PFObject *user;
 
 @property (weak, nonatomic) id<NWManagePortfolioTabViewControllerDelegate> delegate2;
 

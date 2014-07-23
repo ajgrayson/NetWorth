@@ -7,7 +7,7 @@
 //
 
 #import "NWSettingsViewController.h"
-#import <Parse/Parse.h>
+//#import <Parse/Parse.h>
 
 @interface NWSettingsViewController ()
 
@@ -29,12 +29,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    if([PFUser currentUser])
-    {
-        PFUser *user = [PFUser currentUser];
-        self.usernameLabel.text = [user objectForKey:@"username"];
-        self.emailLabel.text = [user objectForKey:@"email"];
-    }
+//    if([PFUser currentUser])
+//    {
+//        PFUser *user = [PFUser currentUser];
+//        self.usernameLabel.text = [user objectForKey:@"username"];
+//        self.emailLabel.text = [user objectForKey:@"email"];
+//    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,7 +45,7 @@
 
 - (IBAction)logout:(id)sender
 {
-    [PFUser logOut];
+//    [PFUser logOut];
     [self.delegate settingsViewControllerDidLogout:self];
 }
 @end

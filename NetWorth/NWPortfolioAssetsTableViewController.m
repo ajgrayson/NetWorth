@@ -39,13 +39,13 @@
     
     UINavigationController *nc = (UINavigationController *)[self parentViewController];
     NWManagePortfolioTabViewController *tabView = (NWManagePortfolioTabViewController *)[nc parentViewController];
-    self.account = tabView.account;
-    self.user = tabView.user;
-    
-    if(![[PFUser currentUser].objectId isEqualToString:self.user.objectId])
-    {
-        self.addAssetButton.enabled = NO;
-    }
+//    self.account = tabView.account;
+//    self.user = tabView.user;
+//    
+//    if(![[PFUser currentUser].objectId isEqualToString:self.user.objectId])
+//    {
+//        self.addAssetButton.enabled = NO;
+//    }
     
     [self loadAssets];
 }
@@ -71,31 +71,31 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NWItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AssetCell" forIndexPath:indexPath];
-
-    PFObject *asset = [self.assets objectAtIndex:indexPath.row];
-    [cell.titleLabel setText:[asset objectForKey:@"name"]];
-    
-    NSString *val = [asset objectForKey:@"value"];
-    NSNumber *nval = [[NSNumber alloc] initWithFloat:[val floatValue]];
-    NSString *sval = [NWHelper formatNumberAsMoney:nval];
-    
-    [cell.valueLabel setText:sval];
-    
-    int catId = 0;
-    if([asset objectForKey:@"category"] != nil) {
-        catId = [[asset objectForKey:@"category"] intValue];
-    }
-    
-    NWCategory *cat = [self.categories objectAtIndex:catId];
-    [cell.categoryLabel setText:cat.name];
-    
-    PFObject *user = [asset objectForKey:@"author"];
-    if(![[PFUser currentUser].objectId isEqualToString:user.objectId])
-    {
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.userInteractionEnabled = NO;
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
+//
+//    PFObject *asset = [self.assets objectAtIndex:indexPath.row];
+//    [cell.titleLabel setText:[asset objectForKey:@"name"]];
+//    
+//    NSString *val = [asset objectForKey:@"value"];
+//    NSNumber *nval = [[NSNumber alloc] initWithFloat:[val floatValue]];
+//    NSString *sval = [NWHelper formatNumberAsMoney:nval];
+//    
+//    [cell.valueLabel setText:sval];
+//    
+//    int catId = 0;
+//    if([asset objectForKey:@"category"] != nil) {
+//        catId = [[asset objectForKey:@"category"] intValue];
+//    }
+//    
+//    NWCategory *cat = [self.categories objectAtIndex:catId];
+//    [cell.categoryLabel setText:cat.name];
+//    
+//    PFObject *user = [asset objectForKey:@"author"];
+//    if(![[PFUser currentUser].objectId isEqualToString:user.objectId])
+//    {
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        cell.userInteractionEnabled = NO;
+//        cell.accessoryType = UITableViewCellAccessoryNone;
+//    }
     
     return cell;
 }
@@ -106,8 +106,8 @@
         NWAssetDetailsViewController *viewController = segue.destinationViewController;
         
         viewController.delegate = self;
-        viewController.user = [self user];
-        viewController.account = [self account];
+//        viewController.user = [self user];
+//        viewController.account = [self account];
     } else if ([segue.identifier isEqualToString:@"EditAsset"]) {
         NWAssetDetailsViewController *viewController = segue.destinationViewController;
         
@@ -115,11 +115,11 @@
 
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         
-        PFObject *asset = [self.assets objectAtIndex:indexPath.row];
-        
-        viewController.asset = asset;
-        viewController.user = [self user];
-        viewController.account = [self account];
+//        PFObject *asset = [self.assets objectAtIndex:indexPath.row];
+//        
+//        viewController.asset = asset;
+//        viewController.user = [self user];
+//        viewController.account = [self account];
     }
 }
 
@@ -127,20 +127,20 @@
 {
     self.assets = [NSMutableArray arrayWithCapacity:0];
     
-    PFQuery *postQuery = [PFQuery queryWithClassName:ItemClassName];
-    
-    // Follow relationship
-    [postQuery whereKey:@"author" equalTo:self.user];
-    [postQuery whereKey:@"account" equalTo:[self account]];
-    [postQuery whereKey:@"type" equalTo:AssetTypeName];
-    
-    [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            [self.assets removeAllObjects];           // Store results
-            [self.assets addObjectsFromArray:objects];
-            [self.tableView reloadData];   // Reload table
-        }
-    }];
+//    PFQuery *postQuery = [PFQuery queryWithClassName:ItemClassName];
+//    
+//    // Follow relationship
+//    [postQuery whereKey:@"author" equalTo:self.user];
+//    [postQuery whereKey:@"account" equalTo:[self account]];
+//    [postQuery whereKey:@"type" equalTo:AssetTypeName];
+//    
+//    [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (!error) {
+//            [self.assets removeAllObjects];           // Store results
+//            [self.assets addObjectsFromArray:objects];
+//            [self.tableView reloadData];   // Reload table
+//        }
+//    }];
 }
 
 - (IBAction)done:(id)sender
@@ -154,12 +154,12 @@
 {
     [[self navigationController] popViewControllerAnimated:YES];
 }
-
-- (void)assetDetailsViewController:(NWAssetDetailsViewController *)controller didSaveAsset:(PFObject *)asset
-{
-    [self loadAssets];
-    
-    [[self navigationController] popViewControllerAnimated:YES];
-}
+//
+//- (void)assetDetailsViewController:(NWAssetDetailsViewController *)controller didSaveAsset:(PFObject *)asset
+//{
+//    [self loadAssets];
+//    
+//    [[self navigationController] popViewControllerAnimated:YES];
+//}
 
 @end
